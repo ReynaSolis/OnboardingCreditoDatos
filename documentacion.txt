@@ -1,0 +1,4 @@
+https://reactnavigation.org/docs/hello-react-navigation
+https://www.youtube.com/watch?v=T5MZEPH7FaQ
+https://developmobileapplications.com/how-to-get-textinput-value-on-button-click-into-react-native
+https://reactnative.dev/docs/colors

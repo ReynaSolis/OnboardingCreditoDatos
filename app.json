@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "creditoDatos",
+    "slug": "creditoDatos",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "creditoDatos",
+  "displayName": "creditoDatos"
+}
