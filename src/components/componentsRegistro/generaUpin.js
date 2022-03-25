@@ -9,9 +9,8 @@ export default function generaUpin ({ navigation}){
   return (
     <View>
         <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>A continuacion crearas tu cuenta IDe</Text>
+         <Text style={styles.title}>A continuacion genera tu uPIN de 6 numeros secretos y no lo compartas con nadie.</Text>
          <Image style={styles.logo2} source={logo}/>
-         <Text style={styles.title}>Tus documentos de identidad Electronica estaran cifrados y seguros.</Text>
 
         <View style={styles.btn}>
         <Button
@@ -19,7 +18,7 @@ export default function generaUpin ({ navigation}){
         title= "ENTENDIDO"
         type="clear"
         onPress={() => {
-          navigation.navigate('telefono')
+          navigation.navigate('crearUpin')
         }
 
         } 
@@ -35,6 +34,9 @@ const styles = StyleSheet.create({
      color: "black",
      marginLeft: 'auto',
      marginRight: 'auto',
+     textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     },
     logo: {
      width: 150,
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 20,
-        marginTop: 20,
+        marginTop: 30,
        },
    btn: {
      marginTop: 20,

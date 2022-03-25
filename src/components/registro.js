@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
      color: "black",
      marginLeft: 'auto',
      marginRight: 'auto',
+     textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     },
     logo: {
      width: 150,
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 20,
-        marginTop: 20,
+        marginTop: 30,
        },
    btn: {
      marginTop: 20,

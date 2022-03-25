@@ -17,6 +17,7 @@ export default function validarTelefono ({ navigation}){
          <TextInput style={styles.input} 
          placeholder="codigo 4 digitos"
          maxLength={4}
+         keyboardType="numeric"
          
          />
 

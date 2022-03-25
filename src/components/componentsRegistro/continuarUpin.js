@@ -2,36 +2,33 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
-import mexico from "../../../assets/img/mexico.png";
 
-//curp
-export default function telefono ({ navigation}){
+
+export default function continuarUpin ({ navigation}){
 
   return (
         <View>
          
          <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>Validar numero telefonico</Text>
-         <Text style={styles.title}>A continuacion recibiras un SMS con un codigo de validacion.</Text>
-         <Text style={styles.movil}>Numero movil:</Text>
+         <Text style={styles.title}>Acceso con uPIN</Text>
+         <Text style={styles.upin}>uPIN:</Text>
 
-        <View style={styles.container}>
-        <Image style={styles.bandera} source={mexico}/>
-        <Text style={styles.pais}>+52</Text>
          <TextInput style={styles.input} 
-         placeholder="10 digitos"
-         maxLength={10}
-         keyboardType="numeric"
+         placeholder=""
+         maxLength={6}
+         secureTextEntry={true}
+         
+         
          />
-        </View>
+
       
         <View style={styles.btn}>
         <Button
         theme={{ colors: { primary: '#000000' } }}
-        title= "OBTENER CODIGO"
+        title= "CONTINUAR"
         type="clear"
         onPress={() => {
-          navigation.navigate('validarTelefono')
+          navigation.navigate('inbox')
         }
           /*
         {
@@ -80,33 +77,16 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     marginBottom: 20
    },
-   movil: {
+   upin: {
     color: "black",
     marginLeft:15,
    },
-   container: {
-    marginBottom: 10,
-    marginTop:10,
-    flex: 1,
-    alignItems: "center", // ignore this - we'll come back to it
-    justifyContent: "center", // ignore this - we'll come back to it
-    flexDirection: "row",
-   },
-   bandera: {
-    width: 50,
-    height: 40,
-    display: 'block',
-   },
-   pais: {
-    fontWeight:'bold',
-    marginLeft: 10,
-    marginRight: 10,
-
-   },
    input: {
-    height:40,
-    width:250, 
-    borderWidth: 1,
+    height:40, 
+    marginTop: 10,
+    marginLeft:20,
+    marginRight:20,
+    
    },
   btn: {
     marginTop: 20,

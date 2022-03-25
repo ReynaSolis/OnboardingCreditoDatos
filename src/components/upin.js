@@ -15,7 +15,8 @@ export default function upin ({ navigation}){
 
          <TextInput style={styles.input} 
          placeholder="Ingresa los 6 caracteres"
-         maxLength={18}
+         maxLength={6}
+         keyboardType="numeric"
          />
 
         <Text onPress={() => navigation.navigate('consultarUpin')}
@@ -27,11 +28,11 @@ export default function upin ({ navigation}){
         title= "INICIAR SESION"
         type="clear"
         onPress={() => {
-            Linking.openURL('https://mail.google.com/mail/u/0/#inbox')
+          navigation.navigate('inbox')}
             //inicio sesion corrctamente lo dirige al inbox
         }
 
-        } 
+        
         />
         </View>
 
