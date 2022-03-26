@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
 //curp
-export default function login ({ navigation}){
+export default class login extends React.Component {
+
+  constructor(){
+  super()
+  this.state={
+    curpv: '',
+  }
+}
+
+changecurp(curpv){
+this.setState({curpv})
+}
+
+
+validado(){
+if(this.state.curpv.length==18){
+  this.props.navigation.navigate('upin')
+}else{
+  Alert.alert('CURP Incorrecto', 'Recuerda que tu CURP tiene 18 caracteres. Si lo olvidaste puedes consultar en ¿Olvidaste tu CURP?', [{text: 'ENTENDIDO', onPress: ()=> console.log('alert closed')}])
+}
+}
+
+  
+render(){
 
   return (
+    //desde aqui es lo que vemos en pantalla:
         <View>
          <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
          <Image style={styles.logo} source={logo}/>
@@ -15,14 +39,15 @@ export default function login ({ navigation}){
          <TextInput style={styles.input} 
          placeholder="Ingresa los 18 caracteres"
          maxLength={18}
-         
-         
+        keyboardType="default"
+        onChangeText={(curpv)=>this.changecurp(curpv)}
+        value={this.state.curpv}
          />
 
         <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
         style={styles.curpgob}>¿Olvidaste tu CURP?</Text>
 
-        <Text onPress={() => navigation.navigate('registro') }
+        <Text onPress={() => this.props.navigation.navigate('registro') }
         style={styles.curpgob}>¡Registrate!</Text>
         
         <View style={styles.btn}>
@@ -30,35 +55,13 @@ export default function login ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "Entendido"
         type="clear"
-        onPress={() => {
-          navigation.navigate('upin')
-        }
-          /*
-        {
-          if(this.state.curp.length==18){
-            console.log('se busca en la base de datos.');
-            console.log(this.state.curp + this.state.curp.length);
-            if(this.state.curp==true){
-              navigation.navigate('upin')
-            }else{
-              navigation.navigate('registro')
-            }
-          }else if(this.state.curp.length<18){
-            Alert.alert('No es correcto');
-            console.log('no es correcto el curp');
-          }
-        }
-        */
-
-        } 
+        onPress={() => this.validado() } 
         />
         </View>
-
          </View>
-
-         
      
   );
+}
 }
 
 
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
     marginLeft:20,
     marginRight:20,
     borderWidth: 1,
+    textTransform: 'uppercase',
    },
    curpgob: {
     color: "blue",

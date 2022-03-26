@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
-//curp
-export default function validarTelefono ({ navigation}){
-
+//validacion telefono
+export default class validarTelefono extends React.Component{
+  render(){
   return (
         <View>
          
@@ -27,10 +27,8 @@ export default function validarTelefono ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "VALIDAR CELULAR"
         type="clear"
-        onPress={() => {
-            navigation.navigate('generaUpin')
-        }
-
+        onPress={() => 
+          this.props.navigation.navigate('generaUpin')
         } 
         />
 
@@ -47,6 +45,7 @@ export default function validarTelefono ({ navigation}){
          
      
   );
+}
 }
 
 

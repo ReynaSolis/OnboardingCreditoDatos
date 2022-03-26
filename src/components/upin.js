@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
 //upin
-export default function upin ({ navigation}){
+export default class upin extends React.Component{
 
+  render(){
   return (
     <View>
         <Image style={styles.logo} source={logo}/>
@@ -17,9 +18,11 @@ export default function upin ({ navigation}){
          placeholder="Ingresa los 6 caracteres"
          maxLength={6}
          keyboardType="numeric"
+         password={true}
+         secureTextEntry={true}
          />
 
-        <Text onPress={() => navigation.navigate('consultarUpin')}
+        <Text onPress={() => this.props.navigation.navigate('consultarUpin')}
         style={styles.email}>¿Olvidaste tu uPIN?</Text>
         
         <View style={styles.btn}>
@@ -27,17 +30,18 @@ export default function upin ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "INICIAR SESION"
         type="clear"
-        onPress={() => {
-          navigation.navigate('inbox')}
+        onPress={() => 
+          this.props.navigation.navigate('inbox')
             //inicio sesion corrctamente lo dirige al inbox
+           
         }
 
         
         />
         </View>
-
          </View>
   );
+}
 }
 
 const styles = StyleSheet.create({

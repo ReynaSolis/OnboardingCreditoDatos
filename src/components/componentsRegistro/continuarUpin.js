@@ -4,8 +4,8 @@ import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
 
-export default function continuarUpin ({ navigation}){
-
+export default class continuarUpin extends React.Component {
+render(){
   return (
         <View>
          
@@ -27,25 +27,8 @@ export default function continuarUpin ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "CONTINUAR"
         type="clear"
-        onPress={() => {
-          navigation.navigate('inbox')
-        }
-          /*
-        {
-          if(this.state.curp.length==18){
-            console.log('se busca en la base de datos.');
-            console.log(this.state.curp + this.state.curp.length);
-            if(this.state.curp==true){
-              navigation.navigate('upin')
-            }else{
-              navigation.navigate('registro')
-            }
-          }else if(this.state.curp.length<18){
-            Alert.alert('No es correcto');
-            console.log('no es correcto el curp');
-          }
-        }
-        */
+        onPress={() => 
+          this.props.navigation.navigate('inbox')
 
         } 
         />
@@ -55,7 +38,7 @@ export default function continuarUpin ({ navigation}){
 
          
      
-  );
+  );}
 }
 
 

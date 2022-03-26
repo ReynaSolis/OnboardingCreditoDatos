@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
-//curp
-export default function crearUpin ({ navigation}){
-
+//crear upin
+export default class crearUpin extends React.Component{
+  render(){
   return (
         <View>
          
@@ -20,16 +20,21 @@ export default function crearUpin ({ navigation}){
          maxLength={6}
          secureTextEntry={true}
          keyboardType="numeric"
+         password={true}
+         
          
          />
 
         <Text style={styles.instruccion}>Confirmar uPIN:</Text>
 
         <TextInput style={styles.input} 
-        placeholder="uPIN 6 digitos"
+        placeholder=" Confirmar uPIN"
         maxLength={6}
         secureTextEntry={true}
         keyboardType="numeric"
+        password={true}
+       
+
         />
 
         <View style={styles.btn}>
@@ -37,9 +42,8 @@ export default function crearUpin ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "ESTABLECER uPIN"
         type="clear"
-        onPress={() => {
-            navigation.navigate('continuarUpin')
-        }
+        onPress={() => 
+          this.props.navigation.navigate('continuarUpin')
 
         } 
         />
@@ -51,6 +55,7 @@ export default function crearUpin ({ navigation}){
          
      
   );
+}
 }
 
 

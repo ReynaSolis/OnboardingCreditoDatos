@@ -4,12 +4,14 @@ import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
 //consultar upin
-export default function consultarUpin ({ navigation}){
+export default class consultarUpin extends React.Component{
+    render(){
     return (
         <View>
             <Text style={styles.title}>no recuerdo el upin</Text>
         </View>
     )
+}
 }
 
 const styles = StyleSheet.create({

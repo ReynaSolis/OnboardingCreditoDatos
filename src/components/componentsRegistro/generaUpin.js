@@ -4,8 +4,8 @@ import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
 
-export default function generaUpin ({ navigation}){
-
+export default class generaUpin extends React.Component{
+render(){
   return (
     <View>
         <Image style={styles.logo} source={logo}/>
@@ -17,16 +17,14 @@ export default function generaUpin ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "ENTENDIDO"
         type="clear"
-        onPress={() => {
-          navigation.navigate('crearUpin')
-        }
-
+        onPress={() =>
+          this.props.navigation.navigate('crearUpin')
         } 
         />
         </View>
 
          </View>
-  );
+  );}
 }
 
 const styles = StyleSheet.create({

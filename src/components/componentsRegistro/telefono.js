@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
 
-//curp
-export default function telefono ({ navigation}){
-
+//telefono
+export default class telefono extends React.Component{
+  render(){
   return (
         <View>
          
@@ -30,26 +30,7 @@ export default function telefono ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "OBTENER CODIGO"
         type="clear"
-        onPress={() => {
-          navigation.navigate('validarTelefono')
-        }
-          /*
-        {
-          if(this.state.curp.length==18){
-            console.log('se busca en la base de datos.');
-            console.log(this.state.curp + this.state.curp.length);
-            if(this.state.curp==true){
-              navigation.navigate('upin')
-            }else{
-              navigation.navigate('registro')
-            }
-          }else if(this.state.curp.length<18){
-            Alert.alert('No es correcto');
-            console.log('no es correcto el curp');
-          }
-        }
-        */
-
+        onPress={() => this.props.navigation.navigate('validarTelefono')
         } 
         />
         </View>
@@ -59,6 +40,7 @@ export default function telefono ({ navigation}){
          
      
   );
+}
 }
 
 

@@ -4,8 +4,9 @@ import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
 //registro login
-export default function registro ({ navigation}){
+export default class registro extends React.Component {
 
+  render(){
   return (
     <View>
         <Image style={styles.logo} source={logo}/>
@@ -18,16 +19,15 @@ export default function registro ({ navigation}){
         theme={{ colors: { primary: '#000000' } }}
         title= "ENTENDIDO"
         type="clear"
-        onPress={() => {
-          navigation.navigate('telefono')
-        }
-
+        onPress={() => 
+          this.props.navigation.navigate('telefono')
         } 
         />
         </View>
 
          </View>
   );
+}
 }
 
 const styles = StyleSheet.create({
