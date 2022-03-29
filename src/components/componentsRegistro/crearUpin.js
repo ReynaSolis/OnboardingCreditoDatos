@@ -1,11 +1,47 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
+import React, { useState, Component } from 'react';
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
 //crear upin
 export default class crearUpin extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      upinew1: '',
+      upinew2: '',
+      show: false,
+    }
+  }
+  hidden(){
+    this.setState({show:false})
+  }
+  
+  changeupinew1(upinew1){
+    this.setState({upinew1})
+    }
+  changeupinew2(upinew2){
+  this.setState({upinew2})
+  }
+  
+  
+  validado(){
+  if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
+    this.state.upinew1 === this.state.upinew2){
+    this.props.navigation.navigate('continuarUpin', {data:this.state.upinew2})
+    
+  }else{
+    this.setState({show:true})
+  }
+  }
+
+  
+  
+  
+  
+
   render(){
+    
   return (
         <View>
          
@@ -21,6 +57,8 @@ export default class crearUpin extends React.Component{
          secureTextEntry={true}
          keyboardType="numeric"
          password={true}
+         onChangeText={(upinew1)=>this.changeupinew1(upinew1)}
+         value={this.state.upinew1}
          
          
          />
@@ -33,6 +71,8 @@ export default class crearUpin extends React.Component{
         secureTextEntry={true}
         keyboardType="numeric"
         password={true}
+        onChangeText={(upinew2)=>this.changeupinew2(upinew2)}
+        value={this.state.upinew2}
        
 
         />
@@ -43,12 +83,35 @@ export default class crearUpin extends React.Component{
         title= "ESTABLECER uPIN"
         type="clear"
         onPress={() => 
-          this.props.navigation.navigate('continuarUpin')
+          this.validado()
 
         } 
         />
 
         </View>
+
+        <Modal
+        transparent={true}
+        visible={this.state.show}
+        >
+          
+            <View style={styles.modalcontainer}>
+            <View style={styles.modaltextcontainer}>
+            <Text style={styles.modaltext}>uPIN incorrecto/No coincide</Text>
+              <Text style={styles.modaltext2}>Recuerda que tu uPIN tiene 6 numeros y debe coincidir en ambos recuadros.</Text>
+            
+              <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "ENTENDIDO"
+               type="clear"
+              onPress={() => this.hidden()} 
+               />
+               </View>
+            </View>
+            </View>
+
+        </Modal>
 
          </View>
 
@@ -120,6 +183,33 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
    },
+     //modal
+  modalcontainer: {
+    flex:1,
+    alignItems:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'center',
+    alignContent: 'center',
+    
+  },
+  modaltextcontainer: {
+    alignItems: 'center',
+    backgroundColor:'white',
+    borderWidth:3,
+    margin:50,
+    padding:40,
+    
+  },
+  modaltext: {
+    fontSize:15,
+    fontWeight: 'bold'
+    
+  },
+  modaltext2: {
+    fontSize:10,
+    
+  },
 
 
 });

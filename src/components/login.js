@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
@@ -10,6 +10,8 @@ export default class login extends React.Component {
   super()
   this.state={
     curpv: '',
+    show: false,
+    registro: false,
   }
 }
 
@@ -22,8 +24,24 @@ validado(){
 if(this.state.curpv.length==18){
   this.props.navigation.navigate('upin')
 }else{
-  Alert.alert('CURP Incorrecto', 'Recuerda que tu CURP tiene 18 caracteres. Si lo olvidaste puedes consultar en ¿Olvidaste tu CURP?', [{text: 'ENTENDIDO', onPress: ()=> console.log('alert closed')}])
+  this.setState({show:true})
 }
+}
+
+hidden(){
+  this.setState({show:false})
+}
+
+hidden2(){
+  this.setState({registro:false})
+}
+
+registro(){
+  if(this.state.curpv.length==18){
+    this.props.navigation.navigate('registro')
+  }else{
+    this.setState({registro:true})
+  }
 }
 
   
@@ -47,7 +65,7 @@ render(){
         <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
         style={styles.curpgob}>¿Olvidaste tu CURP?</Text>
 
-        <Text onPress={() => this.props.navigation.navigate('registro') }
+        <Text onPress={() => this.registro() }
         style={styles.curpgob}>¡Registrate!</Text>
         
         <View style={styles.btn}>
@@ -58,6 +76,59 @@ render(){
         onPress={() => this.validado() } 
         />
         </View>
+
+        <Modal
+        transparent={true}
+        visible={this.state.show}
+        >
+          
+            <View style={styles.modalcontainer}>
+            <View style={styles.modaltextcontainer}>
+              <Text style={styles.modaltext}>CURP Incorrecto.</Text>
+              <Text style={styles.modaltext2}>Recuerda que tu CURP tiene 18 caracteres. 
+              Si lo olvidaste puedes consultar en:</Text>
+              <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
+              style={styles.curpgob}>¿Olvidaste tu CURP?</Text>
+              
+
+              <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "ENTENDIDO"
+               type="clear"
+              onPress={() => this.hidden()} 
+               />
+               </View>
+            </View>
+            </View>
+
+        </Modal>
+
+        <Modal
+        transparent={true}
+        visible={this.state.registro}
+        >
+          
+            <View style={styles.modalcontainer}>
+            <View style={styles.modaltextcontainer}>
+              <Text style={styles.modaltext}>Introduce tu CURP para el registro.</Text>
+              
+
+              <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "ENTENDIDO"
+               type="clear"
+              onPress={() => this.hidden2()} 
+               />
+               </View>
+            </View>
+            </View>
+
+        </Modal>
+
+
+
          </View>
      
   );
@@ -68,7 +139,7 @@ render(){
 
 
 
-
+//styles
 const styles = StyleSheet.create({
    title: {
     color: "black",
@@ -108,6 +179,33 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderWidth:1,
     borderRadius:20,
+    
+  },
+  //modal
+  modalcontainer: {
+    flex:1,
+    alignItems:'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlignVertical: 'center',
+    alignContent: 'center',
+    
+  },
+  modaltextcontainer: {
+    alignItems: 'center',
+    backgroundColor:'white',
+    borderWidth:3,
+    margin:50,
+    padding:40,
+    
+  },
+  modaltext: {
+    fontSize:15,
+    fontWeight: 'bold'
+    
+  },
+  modaltext2: {
+    fontSize:10,
     
   },
 

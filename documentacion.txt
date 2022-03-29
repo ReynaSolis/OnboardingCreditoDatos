@@ -11,3 +11,5 @@ https://reactnative.dev/docs/intro-react
 https://blog.nubecolectiva.com/como-crear-un-formulario-en-react-native-y-validarlo-del-lado-front-end/
 https://www.digitalocean.com/community/tutorials/react-react-native-navigation-es#conclusion
 
+https://www.youtube.com/watch?v=f1Ty_-zYSXw
+

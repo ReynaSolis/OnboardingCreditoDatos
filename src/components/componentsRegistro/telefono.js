@@ -1,11 +1,36 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
 
 //telefono
 export default class telefono extends React.Component{
+
+  constructor(){
+    super()
+    this.state={
+      telv: '',
+      show: false,
+    }
+  }
+  
+  changetel(telv){
+  this.setState({telv})
+  }
+  
+  
+  validado(){
+  if(this.state.telv.length==10){
+    this.props.navigation.navigate('validarTelefono')
+  }else{
+    this.setState({show:true})
+  }
+  }
+
+  hidden(){
+    this.setState({show:false})
+  }
   render(){
   return (
         <View>
@@ -22,6 +47,8 @@ export default class telefono extends React.Component{
          placeholder="10 digitos"
          maxLength={10}
          keyboardType="numeric"
+         onChangeText={(telv)=>this.changetel(telv)}
+         value={this.state.telv}
          />
         </View>
       
@@ -30,10 +57,32 @@ export default class telefono extends React.Component{
         theme={{ colors: { primary: '#000000' } }}
         title= "OBTENER CODIGO"
         type="clear"
-        onPress={() => this.props.navigation.navigate('validarTelefono')
-        } 
+        onPress={() => this.validado()} 
         />
         </View>
+
+
+        <Modal
+        transparent={true}
+        visible={this.state.show}
+        >
+          
+            <View style={styles.modalcontainer}>
+            <View style={styles.modaltextcontainer}>
+              <Text style={styles.modaltext2}>Introduce un numero de celular valido.</Text>
+            
+              <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "ENTENDIDO"
+               type="clear"
+              onPress={() => this.hidden()} 
+               />
+               </View>
+            </View>
+            </View>
+
+        </Modal>
 
          </View>
 
@@ -98,5 +147,27 @@ const styles = StyleSheet.create({
     borderRadius:20,
     
   },
+        //modal
+        modalcontainer: {
+          flex:1,
+          alignItems:'center',
+          justifyContent: 'center',
+          alignItems: 'center',
+          textAlignVertical: 'center',
+          alignContent: 'center',
+          
+        },
+        modaltextcontainer: {
+          alignItems: 'center',
+          backgroundColor:'white',
+          borderWidth:3,
+          margin:30,
+          padding:20,
+          
+        },
+        modaltext2: {
+          fontSize:10,
+          
+        },
 
 });
