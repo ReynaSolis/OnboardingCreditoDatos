@@ -1,6 +1,6 @@
-
 import React from 'react';
 import { StyleSheet, Text, View, Alert } from 'react-native';
+import Constants from 'expo-constants';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -22,7 +22,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
 
-
+  console.log(Constants.systemFonts);
 
   return (
 

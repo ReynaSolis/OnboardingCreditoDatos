@@ -12,4 +12,5 @@ https://blog.nubecolectiva.com/como-crear-un-formulario-en-react-native-y-valida
 https://www.digitalocean.com/community/tutorials/react-react-native-navigation-es#conclusion
 
 https://www.youtube.com/watch?v=f1Ty_-zYSXw
+https://www.youtube.com/watch?v=GlwsX2qDeCk
 

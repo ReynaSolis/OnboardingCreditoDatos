@@ -2,6 +2,11 @@
   "name": "creditodatos",
   "version": "1.0.0",
   "main": "index.js",
+  "expo": {
+    "autolinking": {
+      "exclude": ["expo-keep-awake"]
+    }
+  },
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
@@ -14,6 +19,7 @@
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.2",
     "expo": "~44.0.2",
+    "expo-constants": "~13.0.1",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
     "react": "17.0.1",
@@ -23,7 +29,7 @@
     "react-native-button": "^3.0.1",
     "react-native-eject": "^0.1.2",
     "react-native-elements": "^3.4.2",
-    "react-native-safe-area-context": "^3.3.2",
+    "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1"
   },
