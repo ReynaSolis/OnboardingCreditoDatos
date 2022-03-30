@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "creditoDatos",
-    "slug": "creditoDatos",
+    "name": "creditodatos",
+    "slug": "creditodatos",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]
   },
-  "name": "creditoDatos",
-  "displayName": "creditoDatos"
+  "name": "creditodatos",
+  "displayName": "creditodatos"
 }
