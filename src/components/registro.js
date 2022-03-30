@@ -32,7 +32,7 @@ export default class Registro extends React.Component {
         title= "ENTENDIDO"
         type="clear"
         onPress={() => 
-          this.props.navigation.navigate('telefono')
+          this.props.navigation.navigate('Telefono')
         } 
         />
         </View>

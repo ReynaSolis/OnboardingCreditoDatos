@@ -18,7 +18,7 @@ render(){
         title= "ENTENDIDO"
         type="clear"
         onPress={() =>
-          this.props.navigation.navigate('crearUpin')
+          this.props.navigation.navigate('CrearUpin')
         } 
         />
         </View>

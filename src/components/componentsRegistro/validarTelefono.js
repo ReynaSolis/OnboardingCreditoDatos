@@ -23,7 +23,7 @@ export default class ValidarTelefono extends React.Component{
   
   validado(){
   if(this.state.telva.length==4){
-    this.props.navigation.navigate('generaUpin')
+    this.props.navigation.navigate('GeneraUpin')
   }else{
     this.setState({show:true})
     Alert.alert('Codigo de validacion incorrecto', 
@@ -65,7 +65,7 @@ export default class ValidarTelefono extends React.Component{
         <Text style={styles.advertencia}>Tu codigo expira en 60 segundos</Text>
         <Text style={styles.advertencia}>Este proceso puede durar algunos minutos. Si no lo recibes haz click aqui para reenviar.</Text>
 
-        <Text onPress={() => this.props.navigation.navigate('telefono')}
+        <Text onPress={() => this.props.navigation.navigate('Telefono')}
         style={styles.reenviar}>ENVIARMELO DE NUEVO</Text>
 
 <Modal

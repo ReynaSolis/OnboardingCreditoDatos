@@ -22,7 +22,7 @@ this.setState({curpv})
 
 validado(){
 if(this.state.curpv.length==18){
-  this.props.navigation.navigate('upin')
+  this.props.navigation.navigate('Upin')
 }else{
   this.setState({show:true})
 }
@@ -38,7 +38,7 @@ hidden2(){
 
 registro(){
   if(this.state.curpv.length==18){
-    this.props.navigation.navigate('registro')
+    this.props.navigation.navigate('Registro')
   }else{
     this.setState({registro:true})
   }

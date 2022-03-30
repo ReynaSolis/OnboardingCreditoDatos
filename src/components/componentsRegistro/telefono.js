@@ -22,7 +22,7 @@ export default class Telefono extends React.Component{
   
   validado(){
   if(this.state.telv.length==10){
-    this.props.navigation.navigate('validarTelefono')
+    this.props.navigation.navigate('ValidarTelefono')
   }else{
     this.setState({show:true})
   }

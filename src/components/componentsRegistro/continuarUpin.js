@@ -18,7 +18,7 @@ export default class ContinuarUpin extends React.Component {
     if(this.state.check==false){
     this.setState({show:true})
   }else{
-    this.props.navigation.navigate('inbox')
+    this.props.navigation.navigate('Inbox')
   }
     
   }
@@ -32,7 +32,7 @@ export default class ContinuarUpin extends React.Component {
       this.setState({show:false})
       this.setState({aviso:false})
       this.setState({avisop:false})
-      this.props.navigation.navigate('inbox')
+      this.props.navigation.navigate('Inbox')
     }else{
       this.setState({show:false})
       this.setState({avisop:true})

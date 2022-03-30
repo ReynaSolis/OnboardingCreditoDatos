@@ -22,7 +22,7 @@ export default class Upin extends React.Component{
   
   validado(){
   if(this.state.upinv.length==6){
-    this.props.navigation.navigate('inbox')
+    this.props.navigation.navigate('Inbox')
             //inicio sesion corrctamente lo dirige al inbox
   }else{
     this.setState({show:true})
@@ -54,7 +54,7 @@ export default class Upin extends React.Component{
          value={this.state.upinv}
          />
 
-        <Text onPress={() => this.props.navigation.navigate('consultarUpin')}
+        <Text onPress={() => this.props.navigation.navigate('ConsultarUpin')}
         style={styles.forgetUpin}>¿Olvidaste tu uPIN?</Text>
         
         <View style={styles.btn}>
@@ -77,7 +77,7 @@ export default class Upin extends React.Component{
               <Text style={styles.modaltext}>UPIN Incorrecto</Text>
               <Text style={styles.modaltext2}>Recuerda que tu uPIN contiene 6 caracteres. 
               Si lo olvidaste puedes consultar en:</Text>
-              <Text onPress={() => this.props.navigation.navigate('consultarUpin')}
+              <Text onPress={() => this.props.navigation.navigate('ConsultarUpin')}
               style={styles.forgetUpin}>¿Olvidaste tu uPIN?</Text>
 
   
