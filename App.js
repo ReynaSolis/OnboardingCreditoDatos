@@ -13,6 +13,7 @@ import ValidarTelefono from './src/components/componentsRegistro/validarTelefono
 import GeneraUpin from './src/components/componentsRegistro/generaUpin';
 import CrearUpin from './src/components/componentsRegistro/crearUpin';
 import ContinuarUpin from './src/components/componentsRegistro/continuarUpin';
+import Inbox from './src/components/componentsInbox/inbox';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +36,7 @@ const App = () => {
         <Stack.Screen name= "GeneraUpin" component={GeneraUpin} options={{title:'GeneraUpin'}} />
         <Stack.Screen name= "CrearUpin" component={CrearUpin} options={{title:'CrearUpin'}} />
         <Stack.Screen name= "ContinuarUpin" component={ContinuarUpin} options={{title:'ContinuarUpin'}} />
+        <Stack.Screen name= "Inbox" component={Inbox} options={{title:'Inbox'}} />
 
 
       </Stack.Navigator>
