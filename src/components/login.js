@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
 //curp
-export default class login extends React.Component {
+export default class Login extends React.Component {
 
   constructor(){
   super()
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
    logo: {
     width: 150,
     height: 150,
-    display: 'block',
+    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 20

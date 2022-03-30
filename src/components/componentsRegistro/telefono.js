@@ -5,7 +5,7 @@ import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
 
 //telefono
-export default class telefono extends React.Component{
+export default class Telefono extends React.Component{
 
   constructor(){
     super()
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
    logo: {
     width: 150,
     height: 150,
-    display: 'block',
+    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 20
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
    bandera: {
     width: 50,
     height: 40,
-    display: 'block',
+    display: 'flex',
    },
    pais: {
     fontWeight:'bold',

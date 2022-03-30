@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
 //validacion telefono
-export default class validarTelefono extends React.Component{
+export default class ValidarTelefono extends React.Component{
   constructor(){
     super()
     this.state={
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
    logo: {
     width: 150,
     height: 150,
-    display: 'block',
+    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 20

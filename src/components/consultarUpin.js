@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 
 //consultar upin
-export default class consultarUpin extends React.Component{
+export default class ConsultarUpin extends React.Component{
     render(){
     return (
         <View>

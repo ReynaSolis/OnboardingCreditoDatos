@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
 //crear upin
-export default class crearUpin extends React.Component{
+export default class CrearUpin extends React.Component{
   constructor(props){
     super(props)
     this.state={
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
    logo: {
     width: 150,
     height: 150,
-    display: 'block',
+    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 20

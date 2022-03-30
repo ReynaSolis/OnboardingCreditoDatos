@@ -2,9 +2,8 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button, CheckBox } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
-import crearUpin from './crearUpin';
 
-export default class continuarUpin extends React.Component {
+export default class ContinuarUpin extends React.Component {
   constructor(props){
     super(props)
     this.state={
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
    logo: {
     width: 150,
     height: 150,
-    display: 'block',
+    display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 20

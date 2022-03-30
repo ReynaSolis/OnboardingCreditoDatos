@@ -4,14 +4,15 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //importaciones de pantallas componentes
 import Login from './src/components/login';
-import upin from './src/components/upin';
-import consultarUpin from './src/components/consultarUpin';
-import registro from './src/components/registro';
-import telefono from './src/components/componentsRegistro/telefono';
-import validarTelefono from './src/components/componentsRegistro/validarTelefono';
-import generaUpin from './src/components/componentsRegistro/generaUpin';
-import crearUpin from './src/components/componentsRegistro/crearUpin';
-import continuarUpin from './src/components/componentsRegistro/continuarUpin';
+
+import Upin from './src/components/upin';
+import ConsultarUpin from './src/components/consultarUpin';
+import Registro from './src/components/registro';
+import Telefono from './src/components/componentsRegistro/telefono';
+import ValidarTelefono from './src/components/componentsRegistro/validarTelefono';
+import GeneraUpin from './src/components/componentsRegistro/generaUpin';
+import CrearUpin from './src/components/componentsRegistro/crearUpin';
+import ContinuarUpin from './src/components/componentsRegistro/continuarUpin';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,16 +25,16 @@ const App = () => {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name= "Login" component={Login} options={{title:''}} />
-        <Stack.Screen name= "upin" component={upin} options={{title:'uPIN'}} />
-        <Stack.Screen name= "consultarUpin" component={consultarUpin} options={{title:'Recuperar o Generar uPIN'}} />
-        <Stack.Screen name= "registro" component={registro} options={{title:'Registro'}} />
+        <Stack.Screen name= "Login" component={Login} options={{title:'Login'}} />
+        <Stack.Screen name= "Upin" component={Upin} options={{title:'Upin'}} />
+        <Stack.Screen name= "ConsultarUpin" component={ConsultarUpin} options={{title:'ConsultarUpin'}} />
+        <Stack.Screen name= "Registro" component={Registro} options={{title:'Registro'}} />
 
-        <Stack.Screen name= "telefono" component={telefono} options={{title:'Telefono'}} />
-        <Stack.Screen name= "validarTelefono" component={validarTelefono} options={{title:'Validacion Telefono'}} />
-        <Stack.Screen name= "generaUpin" component={generaUpin} options={{title:'uPIN'}} />
-        <Stack.Screen name= "crearUpin" component={crearUpin} options={{title:'Crear uPIN'}} />
-        <Stack.Screen name= "continuarUpin" component={continuarUpin} options={{title:'Iniciar con uPIN'}} />
+        <Stack.Screen name= "Telefono" component={Telefono} options={{title:'Telefono'}} />
+        <Stack.Screen name= "ValidarTelefono" component={ValidarTelefono} options={{title:'ValidarTelefono'}} />
+        <Stack.Screen name= "GeneraUpin" component={GeneraUpin} options={{title:'GeneraUpin'}} />
+        <Stack.Screen name= "CrearUpin" component={CrearUpin} options={{title:'CrearUpin'}} />
+        <Stack.Screen name= "ContinuarUpin" component={ContinuarUpin} options={{title:'ContinuarUpin'}} />
 
 
       </Stack.Navigator>
