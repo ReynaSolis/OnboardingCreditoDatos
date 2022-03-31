@@ -167,6 +167,10 @@ const styles = StyleSheet.create({
         },
         modaltext2: {
           fontSize:10,
+          fontWeight:'bold',
+          textAlign: 'center',
+          marginLeft: 'auto',
+          marginRight: 'auto',
           
         },
 

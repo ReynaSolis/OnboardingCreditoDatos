@@ -71,8 +71,6 @@ export default class Registro extends React.Component {
 const styles = StyleSheet.create({
     title: {
      color: "black",
-     marginLeft: 'auto',
-     marginRight: 'auto',
      textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -123,11 +121,17 @@ const styles = StyleSheet.create({
   },
   modaltext: {
     fontSize:15,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     
   },
   modaltext2: {
     fontSize:10,
+    textAlign: 'center',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     
   },
  

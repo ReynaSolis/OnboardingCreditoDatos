@@ -1,20 +1,25 @@
 import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
-import logo from "../../../assets/img/logo.png";
+import logo from "../../assets/img/logo.png";
 
-//crear upin
-export default class CrearUpin extends React.Component{
+//nuevo upin
+export default class NuevoUpin extends React.Component{
   constructor(props){
     super(props)
     this.state={
       upinew1: '',
       upinew2: '',
+      upinewt: '',
       show: false,
+      temporal: false,
     }
   }
   hidden(){
     this.setState({show:false})
+  }
+  hidden2(){
+    this.setState({temporal:false})
   }
   
   changeupinew1(upinew1){
@@ -23,16 +28,28 @@ export default class CrearUpin extends React.Component{
   changeupinew2(upinew2){
   this.setState({upinew2})
   }
+
+  changeupinewt(upinewt){
+    this.setState({upinewt})
+    }
   
   
   validado(){
-  if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
-    this.state.upinew1 === this.state.upinew2){
-    this.props.navigation.navigate('ContinuarUpin', {data:this.state.upinew2})
-    
-  }else{
-    this.setState({show:true})
-  }
+      //primero se verifica el codigo temporal
+      if(this.state.upinewt.length==6){
+          //validacion de upins iguales
+        if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
+            this.state.upinew1 === this.state.upinew2){
+                //actualiza upin
+            this.props.navigation.navigate('ContinuarUpin', {data:this.state.upinew2})
+            
+          }else{
+            this.setState({show:true})
+          }
+      }else{
+        this.setState({temporal:true})
+      }
+  
   }
 
   
@@ -46,13 +63,22 @@ export default class CrearUpin extends React.Component{
         <View>
          
          <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>Crear uPIN</Text>
-         <Text style={styles.instruccion}>Establece tu uPIN de 6 numeros y confirmalo.</Text>
-
-         <Text style={styles.instruccion}>uPIN</Text>
+         <Text style={styles.title}>Codigo de verificacion</Text>
+         <Text style={styles.instruccion}>Ingresa el codigo de verificacion temporal que se te envio a tu correo previamente.</Text>
 
          <TextInput style={styles.input} 
-         placeholder="uPIN 6 digitos"
+         placeholder="uPIN temporal"
+         maxLength={6}
+         keyboardType="numeric"
+         password={true}
+         onChangeText={(upinewt)=>this.changeupinewt(upinewt)}
+         value={this.state.upinewt}
+         />
+
+         <Text style={styles.instruccion}>Nuevo uPIN</Text>
+
+         <TextInput style={styles.input} 
+         placeholder="Nuevo uPIN 6 digitos"
          maxLength={6}
          secureTextEntry={true}
          keyboardType="numeric"
@@ -80,7 +106,7 @@ export default class CrearUpin extends React.Component{
         <View style={styles.btn}>
         <Button
         theme={{ colors: { primary: '#000000' } }}
-        title= "ESTABLECER uPIN"
+        title= "REESTABLECER uPIN"
         type="clear"
         onPress={() => 
           this.validado()
@@ -106,6 +132,29 @@ export default class CrearUpin extends React.Component{
                title= "ENTENDIDO"
                type="clear"
               onPress={() => this.hidden()} 
+               />
+               </View>
+            </View>
+            </View>
+
+        </Modal>
+
+        <Modal
+        transparent={true}
+        visible={this.state.temporal}
+        >
+          
+            <View style={styles.modalcontainer}>
+            <View style={styles.modaltextcontainer}>
+            <Text style={styles.modaltext}>Codigo temporal incorrecto/No coincide</Text>
+              <Text style={styles.modaltext2}>Verifica que tu codigo temporal sea el mismo que se mando a tu correo previamente.</Text>
+              <Text style={styles.modaltext2}>De lo contrario no podras generar uno nuevo.</Text>
+              <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "ENTENDIDO"
+               type="clear"
+              onPress={() => this.hidden2()} 
                />
                </View>
             </View>
@@ -160,6 +209,7 @@ const styles = StyleSheet.create({
   instruccion: {
     color: "black",
     marginLeft: 20,
+    marginRight: 20,
     marginBottom: 20,
    },
    advertencia: {

@@ -33,8 +33,6 @@ const styles = StyleSheet.create({
      marginLeft: 'auto',
      marginRight: 'auto',
      textAlign: 'center',
-    marginLeft: 'auto',
-    marginRight: 'auto',
     },
     logo: {
      width: 150,

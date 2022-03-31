@@ -4,7 +4,9 @@
   "main": "index.js",
   "expo": {
     "autolinking": {
-      "exclude": ["expo-keep-awake"]
+      "exclude": [
+        "expo-keep-awake"
+      ]
     }
   },
   "scripts": {
@@ -29,9 +31,11 @@
     "react-native-button": "^3.0.1",
     "react-native-eject": "^0.1.2",
     "react-native-elements": "^3.4.2",
+    "react-native-form-validator": "^0.5.1",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
