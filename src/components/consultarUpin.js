@@ -65,9 +65,13 @@ export default class ConsultarUpin extends React.Component{
             <Text style={styles.email}>Ingresa un email para recuperar tu uPIN:</Text>
             <TextInput style={styles.input} 
             placeholder="example@gmail.com"
-            keyboardType="email-address"
             onChangeText={(emailv)=>this.changeemail(emailv)}
             value={this.state.emailv}
+            textContentType='emailAddress'
+            keyboardType='email-address'
+            autoCapitalize='none'
+            autoCorrect={false}
+            autoCompleteType='email'
             />
 
             <View style={styles.btn}>
@@ -155,6 +159,7 @@ const styles = StyleSheet.create({
         marginRight:20,
         borderWidth: 1,
         marginBottom:20,
+        textTransform: 'lowercase',
        },
        email: {
         color: "black",
