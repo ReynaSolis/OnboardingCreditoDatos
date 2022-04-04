@@ -17,11 +17,15 @@ export default class Inbox extends React.Component{
       transper:true,
       text: '',
       selectEmail:{},
-      isLoading: true,
     }
+
   }
 
+  changetext(text){
+    this.setState({text})
+    }
 
+/*
   updateSearch(text) {
 
     const newData = this.arrayholder.filter(function(email){
@@ -34,6 +38,7 @@ export default class Inbox extends React.Component{
       text: text
   })
   };
+  */
 
   /*refresh(){
     this.props.navigation.navigate('Inbox')
@@ -53,13 +58,13 @@ this.toggleEmail();
   }
 
     render(){
-      if (this.state.isLoading) {
+   /*   if (this.state.isLoading) {
         return (
           <View style={{flex: 1, paddingTop: 20}}>
             <ActivityIndicator />
           </View>
         );
-      }
+      }*/
     return (
         
         <View style={styles.containergeneral}>
@@ -69,7 +74,7 @@ this.toggleEmail();
           <SearchBar
           theme={{ colors: { primary: '#000000' } }}
           placeholder="Search"
-          onChangeText={this.updateSearch}
+          onChangeText={(text)=>this.changetext(text)}
           value={this.state.text}
           />
           </View>
