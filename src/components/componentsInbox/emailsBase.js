@@ -1,5 +1,6 @@
 /////base de datos
-export const emails = [
+export const emails = 
+[
     {
       id: 1,
       sender: "Google",
@@ -34,7 +35,7 @@ export const emails = [
         "https://camo.githubusercontent.com/2b7cb217f80f2b9f8bfb4becdceab7fcaabfcdc3075b0095f4d838a48be08f30/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f4d2e706e67",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
-      sentDate: "Dec 9",
+      sentDate: "Nov 9",
       isSaved: false,
       isRead: false,
     },
@@ -50,7 +51,7 @@ export const emails = [
       sentDate: "Nov 15",
       isSaved: false,
       isRead: true,
-    },
+    },/*
     {
       id: 5,
       sender: "Google",
@@ -76,7 +77,7 @@ export const emails = [
       sentDate: "Dec 9",
       isSaved: false,
       isRead: false,
-    },/*
+    },
     {
       id: 7,
       sender: "Google",

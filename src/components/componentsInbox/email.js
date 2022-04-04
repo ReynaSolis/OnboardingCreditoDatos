@@ -88,23 +88,22 @@ const styles = StyleSheet.create({
         fontStyle:'normal',
       },
       containeremail:{
-          flexDirection:'row',
-          alignContent: "space-between",
+        
           marginBottom:20,
       },
       containeremail1:{
-        flexDirection:'col',
+        
         marginRight:5,
         
     },
     containeremail2:{
-        flexDirection:'col',
+      
         marginLeft:5,
         marginRight:5,
         
     },
     containeremail3:{
-        flexDirection:'col',
+      
         marginLeft:5,
         
     },
@@ -117,8 +116,6 @@ const styles = StyleSheet.create({
        containerfooter: {
         marginBottom:10,
         marginTop:10,
-         flexDirection:'col',
-        flex:0.1,
         alignSelf: 'center',
        },
 })

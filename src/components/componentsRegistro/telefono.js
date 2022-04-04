@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     marginLeft:15,
    },
    container: {
-    marginBottom: 10,
-    marginTop:10,
+    marginBottom: 20,
+    marginTop: 30,
     flex: 1,
     alignItems: "center", // ignore this - we'll come back to it
     justifyContent: "center", // ignore this - we'll come back to it

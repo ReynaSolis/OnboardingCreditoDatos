@@ -4,6 +4,7 @@ import { List, ListItem, Avatar, SearchBar  } from 'react-native-elements';
 import footer from "../../../assets/img/footer.jpg";
 import Emails from './emails';
 import Email from './email';
+import { emails } from './emailsBase';
 
 
 //Inbox
@@ -17,32 +18,10 @@ export default class Inbox extends React.Component{
       transper:true,
       text: '',
       selectEmail:{},
+
     }
 
   }
-
-  changetext(text){
-    this.setState({text})
-    }
-
-/*
-  updateSearch(text) {
-
-    const newData = this.arrayholder.filter(function(email){
-      const itemData = item.fruit_name.toUpperCase()
-      const textData = text.toUpperCase()
-      return itemData.indexOf(textData) > -1
-  })
-  this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(newData),
-      text: text
-  })
-  };
-  */
-
-  /*refresh(){
-    this.props.navigation.navigate('Inbox')
-  }*/
 
   toggleEmail(){
     this.setState({
@@ -58,26 +37,12 @@ this.toggleEmail();
   }
 
     render(){
-   /*   if (this.state.isLoading) {
-        return (
-          <View style={{flex: 1, paddingTop: 20}}>
-            <ActivityIndicator />
-          </View>
-        );
-      }*/
+
     return (
         
         <View style={styles.containergeneral}>
           <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
       
-          <View style={styles.search}>
-          <SearchBar
-          theme={{ colors: { primary: '#000000' } }}
-          placeholder="Search"
-          onChangeText={(text)=>this.changetext(text)}
-          value={this.state.text}
-          />
-          </View>
 
       <Emails
       onSelectEmail={(email)=> this.displayEmail(email)}
@@ -119,9 +84,7 @@ const styles = StyleSheet.create({
     marginBottom:10,
     backgroundColor:'white'
     },
-    search: {
-      marginBottom:10,
-    },
+
     footerimg: {
       width: 30,
       height: 30,
@@ -129,7 +92,6 @@ const styles = StyleSheet.create({
       marginTop:10,
      },
      containerfooter: {
-       flexDirection:'col',
       flex:0.1,
       alignSelf: 'center',
      },
