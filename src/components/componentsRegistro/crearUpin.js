@@ -29,7 +29,14 @@ export default class CrearUpin extends React.Component{
   validado(){
   if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
     this.state.upinew1 === this.state.upinew2){
-    this.props.navigation.navigate('ContinuarUpin', {data:this.state.upinew2})
+      let num = this.state.upinew2.replace(".", '');
+     if(isNaN(num)){
+       //no es un numero
+      this.setState({show:true})
+     }else{
+      this.props.navigation.navigate('ContinuarUpin', {data:this.state.upinew2})} 
+
+    
     
   }else{
     this.setState({show:true})

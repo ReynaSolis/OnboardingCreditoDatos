@@ -15,20 +15,25 @@ export default class Telefono extends React.Component{
       show: false,
     }
   }
-  
+  //cambia input
   changetel(telv){
   this.setState({telv})
   }
   
-  
+  //validacion
   validado(){
   if(this.state.telv.length==10){
-    this.props.navigation.navigate('ValidarTelefono')
+    let num = this.state.telv.replace(".", '');
+    if(isNaN(num)){
+      //no es un numero
+     this.setState({show:true})
+    }else{
+      this.props.navigation.navigate('ValidarTelefono')}
   }else{
     this.setState({show:true})
   }
   }
-
+//oculta modal
   hidden(){
     this.setState({show:false})
   }

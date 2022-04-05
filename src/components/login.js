@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -15,12 +15,12 @@ export default class Login extends React.Component {
     registro: false,
   }
 }
-
+//funcion para poder cambiar el input
 changecurp(curpv){
 this.setState({curpv})
 }
 
-
+//validacion de curp para iniciar sesion
 validado(){
 if(this.state.curpv.length==18){
   this.props.navigation.navigate('Upin')
@@ -29,14 +29,15 @@ if(this.state.curpv.length==18){
 }
 }
 
+//oculta los modales.
 hidden(){
   this.setState({show:false})
 }
-
+//oculta los modales.
 hidden2(){
   this.setState({registro:false})
 }
-
+//una vez ingresado el curp valida que tenga 18 caracteres
 registro(){
   if(this.state.curpv.length==18){
     this.props.navigation.navigate('Registro')
@@ -48,7 +49,6 @@ registro(){
   
 render(){
   
-
   return (
     <KeyboardAwareScrollView>
     
@@ -60,8 +60,10 @@ render(){
          <TextInput style={styles.input} 
          placeholder="Ingresa los 18 caracteres"
          maxLength={18}
+         autoCapitalize = 'characters'
          password={true}
         onChangeText={(curpv)=>this.changecurp(curpv)}
+        
          />
 
         <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
@@ -167,7 +169,7 @@ const styles = StyleSheet.create({
     marginLeft:20,
     marginRight:20,
     borderWidth: 1,
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
    },
    curpgob: {
     color: "blue",

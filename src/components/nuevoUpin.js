@@ -16,6 +16,7 @@ export default class NuevoUpin extends React.Component{
       temporal: false,
     }
   }
+  //oculta modales
   hidden(){
     this.setState({show:false})
   }
@@ -23,6 +24,7 @@ export default class NuevoUpin extends React.Component{
     this.setState({temporal:false})
   }
   
+  //cambios de input
   changeupinew1(upinew1){
     this.setState({upinew1})
     }
@@ -34,10 +36,22 @@ export default class NuevoUpin extends React.Component{
     this.setState({upinewt})
     }
   
-  
+  //validacion
   validado(){
       //primero se verifica el codigo temporal
       if(this.state.upinewt.length==6){
+        let num = this.state.upinewt.replace(".", '');
+     if(isNaN(num)){
+       //no es un numero
+       this.setState({temporal:true})
+     }else{
+      let num1 = this.state.upinew1.replace(".", '');
+      let num2 = this.state.upinew2.replace(".", '');
+      if(isNaN(num1) && isNaN(num2)){
+        //no es un numero
+        this.setState({show:true})
+      }else{
+
           //validacion de upins iguales
         if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
             this.state.upinew1 === this.state.upinew2){
@@ -46,7 +60,7 @@ export default class NuevoUpin extends React.Component{
             
           }else{
             this.setState({show:true})
-          }
+          }}}
       }else{
         this.setState({temporal:true})
       }

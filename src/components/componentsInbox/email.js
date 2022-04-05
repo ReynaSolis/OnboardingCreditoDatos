@@ -1,7 +1,6 @@
 //modales al abrir los emails
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableHighlight, Modal, Linking } from "react-native";
-import { Button } from 'react-native-elements';
 import footer from "../../../assets/img/footer.jpg";
 import Hyperlink from 'react-native-hyperlink';
 

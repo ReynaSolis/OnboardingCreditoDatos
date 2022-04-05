@@ -9,19 +9,16 @@ export default class Emails extends React.Component{
 
   constructor(props){
     super(props)
-
     this.state={
-      
       text: '',
       userFilter: emails,
     }
 
   }
 
+  //funcion searchbar filtro
   changetext(textToSearch){
 
-    //alert(textToSearch)
-    
     this.setState({
 userFilter: emails.filter(email =>
   email.sender.toLowerCase().includes(textToSearch.toLowerCase())||
@@ -40,7 +37,7 @@ userFilter: emails.filter(email =>
           style={styles.searchinput}
           placeholder="Search"
           onChangeText={(text)=>this.changetext(text)}
-          //value={this.state.text}
+        
           />
           <Image style={styles.usuario} source={usuario}/>
           </View>

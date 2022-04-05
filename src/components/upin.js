@@ -20,16 +20,21 @@ export default class Upin extends React.Component{
   this.setState({upinv})
   }
   
-  
+  //validacion
   validado(){
   if(this.state.upinv.length==6){
-    this.props.navigation.navigate('Inbox')
-            //inicio sesion corrctamente lo dirige al inbox
+    let num = this.state.upinv.replace(".", '');
+     if(isNaN(num)){
+       //no es un numero
+      this.setState({show:true})
+     }else{
+      this.props.navigation.navigate('Inbox')}  
+    
   }else{
     this.setState({show:true})
   }
   }
-
+//oculta modales
   hidden(){
     this.setState({show:false})
   }

@@ -24,12 +24,15 @@ export default class ValidarTelefono extends React.Component{
   
   validado(){
   if(this.state.telva.length==4){
-    this.props.navigation.navigate('GeneraUpin')
+    let num = this.state.telva.replace(".", '');
+     if(isNaN(num)){
+       //no es un numero
+      this.setState({show:true})
+     }else{
+      this.props.navigation.navigate('GeneraUpin')}
+    
   }else{
     this.setState({show:true})
-    Alert.alert('Codigo de validacion incorrecto', 
-    'Revisa tus SMS para ingresa correctamente el codigo. De no haber recibido el codigo favor de seleccionar "ENVIARMELO DE NUEVO". ', 
-    [{text: 'ENTENDIDO', onPress: ()=> console.log('alert closed')}])
   }
   }
   render(){
