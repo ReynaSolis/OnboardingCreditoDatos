@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput} from "react-native";
+import { StyleSheet, Text, View, Image, TextInput} from "react-native";
 import { ListItem, Avatar } from 'react-native-elements';
 import { emails } from './emailsBase';
 import buscador from "../../../assets/img/buscador.png";
@@ -33,9 +33,7 @@ userFilter: emails.filter(email =>
     render(){
         return(
 
-
-
-          <View>
+        <View>
           <View style={styles.search}>
           <Image style={styles.buscador} source={buscador}/>
           <TextInput
@@ -46,8 +44,6 @@ userFilter: emails.filter(email =>
           />
           <Image style={styles.usuario} source={usuario}/>
           </View>
-
-          <View style={styles.container}>
 
             {
               this.state.userFilter.map((email) => (
@@ -80,7 +76,7 @@ userFilter: emails.filter(email =>
               ))
             }
             </View>
-            </View>
+            
             
         )
     }
@@ -124,7 +120,5 @@ const styles = StyleSheet.create({
         marginRight:'auto',
         marginTop:5,
        },
-
-
 
 })

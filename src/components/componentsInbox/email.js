@@ -1,8 +1,9 @@
 //modales al abrir los emails
 import React from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, TouchableHighlight, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableHighlight, Modal, Linking } from "react-native";
 import { Button } from 'react-native-elements';
 import footer from "../../../assets/img/footer.jpg";
+import Hyperlink from 'react-native-hyperlink';
 
 export default class Email extends React.Component{
     render(){
@@ -17,22 +18,19 @@ export default class Email extends React.Component{
     <View style={styles.modalcontainer}>
     <View style={styles.modaltextcontainer}>
         <View style={styles.containeremail}>
-        <View style={styles.containeremail1}>
+        
     <Image 
     source={{ uri: this.props.email.senderImageUrl }} 
     style={styles.avatar} />
-    </View>
-    <View style={styles.containeremail2}>
     <Text style={[styles.sender]}>{this.props.email.sender}</Text>
-    </View>
-    <View style={styles.containeremail3}>
     <Text style={[styles.sentDate]}>{this.props.email.sentDate}</Text>
+    
     </View>
-    </View>
-    <Text style={[styles.subject]}>{this.props.email.subject}</Text>
 
-    <Text style={[styles.description]}>{this.props.email.description}</Text>
-              
+    <Text style={[styles.subject]}>{this.props.email.subject}</Text>
+    <Hyperlink linkDefault={true} onPress={Linking.openURL} linkStyle={{ color:'blue', textDecorationLine: 'underline'}}>
+    <Text>{this.props.email.description}</Text>
+    </Hyperlink>
 
     <View style={styles.containerfooter}>
       
@@ -43,7 +41,7 @@ export default class Email extends React.Component{
     </View>
     </View>
     </View>
-      </Modal>
+    </Modal>
       
         )
     }
@@ -71,10 +69,12 @@ const styles = StyleSheet.create({
     },
       avatar: {
         height: 40, 
-        width: 40 
+        width: 40,
+        marginRight:10,
       },
       sender: {
         fontWeight: 'bold',
+        marginRight:10,
       },
       subject: {
         fontWeight: 'bold',
@@ -84,29 +84,10 @@ const styles = StyleSheet.create({
       sentDate: {
         fontStyle:'italic',
       },
-      description: {
-        fontStyle:'normal',
-      },
       containeremail:{
-        
-          marginBottom:20,
+        flexDirection:'row',
+        marginBottom:20,
       },
-      containeremail1:{
-        
-        marginRight:5,
-        
-    },
-    containeremail2:{
-      
-        marginLeft:5,
-        marginRight:5,
-        
-    },
-    containeremail3:{
-      
-        marginLeft:5,
-        
-    },
     footerimg: {
         width: 30,
         height: 30,
@@ -118,4 +99,7 @@ const styles = StyleSheet.create({
         marginTop:10,
         alignSelf: 'center',
        },
+       link:{
+         fontWeight:'bold',
+       }
 })

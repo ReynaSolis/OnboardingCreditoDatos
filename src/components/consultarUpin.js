@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 //recuperacion uPIN
@@ -58,6 +59,7 @@ export default class ConsultarUpin extends React.Component{
 
 
     return (
+      <KeyboardAwareScrollView>
         <View styles={styles.container}>
             
             <Image style={styles.logo} source={logo}/>
@@ -132,6 +134,7 @@ export default class ConsultarUpin extends React.Component{
         </Modal>
 
         </View>
+        </KeyboardAwareScrollView>
     )
 }
 }

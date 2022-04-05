@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 //validacion telefono
 export default class ValidarTelefono extends React.Component{
@@ -33,6 +34,7 @@ export default class ValidarTelefono extends React.Component{
   }
   render(){
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
@@ -93,6 +95,7 @@ export default class ValidarTelefono extends React.Component{
         </Modal>
 
          </View>
+         </KeyboardAwareScrollView>
 
          
      

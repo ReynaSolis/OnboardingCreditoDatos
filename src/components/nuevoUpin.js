@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 //nuevo upin
 export default class NuevoUpin extends React.Component{
@@ -60,6 +61,7 @@ export default class NuevoUpin extends React.Component{
   render(){
     
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
@@ -164,7 +166,7 @@ export default class NuevoUpin extends React.Component{
 
          </View>
 
-         
+         </KeyboardAwareScrollView>
      
   );
 }
@@ -266,6 +268,5 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     
   },
-
 
 });

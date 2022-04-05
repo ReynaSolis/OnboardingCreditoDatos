@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 //telefono
 export default class Telefono extends React.Component{
@@ -33,6 +34,7 @@ export default class Telefono extends React.Component{
   }
   render(){
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
@@ -85,6 +87,7 @@ export default class Telefono extends React.Component{
         </Modal>
 
          </View>
+         </KeyboardAwareScrollView>
 
          
      
