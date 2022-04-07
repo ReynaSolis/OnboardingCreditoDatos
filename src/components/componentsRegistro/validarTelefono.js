@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
    reenviar: {
     color: "black",
     marginTop:30,
+    marginBottom:30,
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'center',
