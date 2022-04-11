@@ -80,7 +80,7 @@ export default class NuevoUpin extends React.Component{
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Codigo de verificacion</Text>
-         <Text style={styles.instruccion}>Ingresa el codigo de verificacion temporal que se te envio a tu correo previamente.</Text>
+         <Text style={styles.instruccion}>Ingresa el codigo que se te envio.</Text>
 
          <TextInput style={styles.input} 
          placeholder="uPIN temporal"
