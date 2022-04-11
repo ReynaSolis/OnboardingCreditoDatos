@@ -5,11 +5,19 @@ import logo from "../../../assets/img/logo.png";
 
 
 export default class GeneraUpin extends React.Component{
+
+
+async  validandoObj(){
+  const ojbM={telefono:this.props.route.params.telefono,curp:this.props.route.params.curp};
+  console.log(ojbM);
+  this.props.navigation.navigate('CrearUpin',ojbM)
+}
+
 render(){
   return (
     <View>
         <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>A continuacion genera tu uPIN de 6 numeros secretos y no lo compartas con nadie.</Text>
+         <Text style={styles.title}>A continuacion genera tu uPIN de 6 números secretos y no lo compartas con nadie.</Text>
          <Image style={styles.logo2} source={logo}/>
 
         <View style={styles.btn}>
@@ -18,7 +26,7 @@ render(){
         title= "ENTENDIDO"
         type="clear"
         onPress={() =>
-          this.props.navigation.navigate('CrearUpin')
+          this.validandoObj()
         } 
         />
         </View>

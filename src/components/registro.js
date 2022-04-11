@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
-
+import { validacionCurp } from '../api/validacionCurp';
 //registro login
 export default class Registro extends React.Component {
 
@@ -15,6 +15,18 @@ export default class Registro extends React.Component {
 
   hidden(){
     this.setState({show:false})
+  }
+
+  async validaCurp(){
+    const curpG= {curp: this.props.route.params.curp.toUpperCase()}
+   const apiResponse=await validacionCurp(curpG);
+   console.log(curpG);
+   console.log(apiResponse);
+   if(apiResponse.codigo!="000"){
+    this.props.navigation.navigate('Telefono', {curp: this.props.route.params.curp})
+   }else{
+    this.props.navigation.navigate('Login')
+   }
   }
 
   render(){
@@ -31,9 +43,7 @@ export default class Registro extends React.Component {
         theme={{ colors: { primary: '#000000' } }}
         title= "ENTENDIDO"
         type="clear"
-        onPress={() => 
-          this.props.navigation.navigate('Telefono')
-        } 
+        onPress={() => this.validaCurp()} 
         />
         </View>
 

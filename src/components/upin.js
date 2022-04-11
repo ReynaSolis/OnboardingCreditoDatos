@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
-
+import {validacionCuenta } from "../api/auth"
 //upin
 export default class Upin extends React.Component{
-
   
   constructor(){
     super()
@@ -20,9 +19,20 @@ export default class Upin extends React.Component{
   }
   
   
-  validado(){
+  async validado(){
   if(this.state.upinv.length==6){
-    this.props.navigation.navigate('Inbox')
+ 
+    const obj= {curp: this.props.route.params.curp, upin:this.state.upinv}
+
+    const apiResponse=await validacionCuenta(obj);
+    console.log(apiResponse);
+    if(apiResponse.codigo==="000"){
+      this.props.navigation.navigate('Inbox')
+      
+    }else{
+      this.setState({show:true});
+    }
+    
             //inicio sesion corrctamente lo dirige al inbox
   }else{
     this.setState({show:true})

@@ -4,170 +4,179 @@ import { Button, CheckBox } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
 export default class ContinuarUpin extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.state={
-      show:false,
-      check:false,
-      aviso:true,
-      avisop:false,
+    this.state = {
+      show: false,
+      check: false,
+      aviso: true,
+      avisop: false,
+      upin: ''
     }
   }
 
-  continuar(){
-    if(this.state.check==false){
-    this.setState({show:true})
-  }else{
-    this.props.navigation.navigate('Inbox')
-  }
-    
+  async continuar() {
+    this.setState({ check: true })
+    if (this.state.check == false) {
+
+    } else {
+      const obj = { curp: this.props.route.params.curp, upin: this.state.upin }
+
+      const apiResponse = await validacionCuenta(obj);
+      if (apiResponse.codigo === "000") {
+        this.setState({ show: true })
+        this.props.navigation.navigate('Inbox')
+      }
+
+    }
+
   }
 
-  checked(){
-    this.setState({check:true})
+  checked() {
+    this.setState({ check: true })
   }
 
-  inbox(){
-    if(this.state.check==true){
-      this.setState({show:false})
-      this.setState({aviso:false})
-      this.setState({avisop:false})
+  inbox() {
+    if (this.state.check == true) {
+      this.setState({ show: false })
+      this.setState({ aviso: false })
+      this.setState({ avisop: false })
       this.props.navigation.navigate('Inbox')
-    }else{
-      this.setState({show:false})
-      this.setState({avisop:true})
+    } else {
+      this.setState({ show: false })
+      this.setState({ avisop: true })
     }
-    
+
   }
 
-  hidden(){
-    this.setState({aviso:false})
+  hidden() {
+    this.setState({ aviso: false })
   }
 
-  hidden2(){
-    this.setState({avisop:false})
-    this.setState({show:true})
+  hidden2() {
+    this.setState({ avisop: false })
+    this.setState({ show: true })
   }
 
 
-render(){
-  const{data}=this.props.route.params
-  return (
-        <View>
-         <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>Acceso con uPIN</Text>
-         <Text style={styles.upin}>uPIN:</Text>
+  render() {
+    return (
+      <View>
+        <Image style={styles.logo} source={logo} />
+        <Text style={styles.title}>Acceso con uPIN</Text>
+        <Text style={styles.upin}>uPIN:</Text>
 
-         <TextInput style={styles.input} 
-         placeholder=""
-         maxLength={6}
-         secureTextEntry={true}
-         keyboardType="numeric"
-         password={true}
-         value={data}
-         />
-        <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "CONTINUAR"
-        type="clear"
-        onPress={() => 
-          this.continuar()
-        } 
+        <TextInput style={styles.input}
+          placeholder=""
+          maxLength={6}
+          secureTextEntry={true}
+          keyboardType="numeric"
+          password={true}
+          value={this.state.upin}
         />
+        <View style={styles.btn}>
+          <Button
+            theme={{ colors: { primary: '#000000' } }}
+            title="CONTINUAR"
+            type="clear"
+            onPress={() =>
+              this.continuar()
+            }
+          />
         </View>
 
 
         <Modal
-        //modal si no se acepta la politica de privacidad
-        transparent={true}
-        visible={this.state.avisop}
+          //modal si no se acepta la politica de privacidad
+          transparent={true}
+          visible={this.state.avisop}
         >
-          
-            <View style={styles.modalcontainer}>
+
+          <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
-            <Text style={styles.modaltext}>Acepta la Politica de Privacidad</Text>
-            
+              <Text style={styles.modaltext}>Acepta la Politica de Privacidad</Text>
+
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden2()} 
-               />
-               </View>
+                <Button
+                  theme={{ colors: { primary: '#000000' } }}
+                  title="ENTENDIDO"
+                  type="clear"
+                  onPress={() => this.hidden2()}
+                />
+              </View>
             </View>
-            </View>
+          </View>
 
         </Modal>
 
         <Modal
-        transparent={true}
-        visible={this.state.aviso}
+          transparent={true}
+          visible={this.state.aviso}
         >
-          
-            <View style={styles.modalcontainer}>
+
+          <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
-            <Text style={styles.modaltext}>Telefono celular propio</Text>
+              <Text style={styles.modaltext}>Telefono celular propio</Text>
               <Text style={styles.modaltext2}>Tu uPIN se ha registrado con exito.</Text>
-            
+
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ACEPTAR"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                <Button
+                  theme={{ colors: { primary: '#000000' } }}
+                  title="ACEPTAR"
+                  type="clear"
+                  onPress={() => this.hidden()}
+                />
+              </View>
             </View>
-            </View>
+          </View>
 
         </Modal>
 
         <Modal
-        transparent={true}
-        visible={this.state.show}
+          transparent={true}
+          visible={this.state.show}
         >
-          
-            <View style={styles.modalcontainer}>
+
+          <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
               <Text style={styles.modaltext}>Terminos y Condiciones.</Text>
-              <Text style={styles.modaltext2}>El aviso de privacidad y proteccion de los datos de DPR es para proteger los datos personales 
-              de sus Clientes y de los interesados receptores de informacion del cliente, por lo que los datos recabados en la plataforma, 
-              estaran protegidos conforme a los dispuesto por la Ley General de Proteccion de Datos Personales en Posesion de los Sujetos 
-              Obligados.</Text>
-              
+              <Text style={styles.modaltext2}>El aviso de privacidad y proteccion de los datos de DPR es para proteger los datos personales
+                de sus Clientes y de los interesados receptores de informacion del cliente, por lo que los datos recabados en la plataforma,
+                estaran protegidos conforme a los dispuesto por la Ley General de Proteccion de Datos Personales en Posesion de los Sujetos
+                Obligados.</Text>
 
-              
+
+
               <View>
-              <CheckBox style={styles.checkbox}
-               title="Acepto la Politica de Privacidad"
-               checked={this.state.check}
-               onPress= {() => this.checked()}
-              />
-             </View>
-             
+                <CheckBox style={styles.checkbox}
+                  title="Acepto la Politica de Privacidad"
+                  checked={this.state.check}
+                  onPress={() => this.checked()}
+                />
+              </View>
+
 
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ACEPTAR"
-               type="clear"
-              onPress={() => this.inbox()} 
-               />
-               </View>
+                <Button
+                  theme={{ colors: { primary: '#000000' } }}
+                  title="ACEPTAR"
+                  type="clear"
+                  onPress={() => this.inbox()}
+                />
+              </View>
 
-               <Text onPress={() => Linking.openURL('https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf')}
-              style={styles.ley}>CONSULTAR POLITICA DE PRIVACIDAD</Text>
+              <Text onPress={() => Linking.openURL('https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf')}
+                style={styles.ley}>CONSULTAR POLITICA DE PRIVACIDAD</Text>
             </View>
-            </View>
+          </View>
         </Modal>
 
-         </View>
+      </View>
 
-         
-     
-  );}
+
+
+    );
+  }
 }
 
 
@@ -176,75 +185,75 @@ render(){
 
 
 const styles = StyleSheet.create({
-   title: {
+  title: {
     color: "black",
     marginLeft: 20,
     marginBottom: 20,
-   },
-   logo: {
+  },
+  logo: {
     width: 150,
     height: 150,
     display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     marginBottom: 20
-   },
-   upin: {
+  },
+  upin: {
     color: "black",
-    marginLeft:15,
-   },
-   input: {
-    height:40, 
+    marginLeft: 15,
+  },
+  input: {
+    height: 40,
     marginTop: 10,
-    marginLeft:20,
-    marginRight:20,
-    
-   },
+    marginLeft: 20,
+    marginRight: 20,
+
+  },
   btn: {
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    borderWidth:1,
-    borderRadius:20,
-    
+    borderWidth: 1,
+    borderRadius: 20,
+
   },
   //modal
   modalcontainer: {
-    flex:1,
-    alignItems:'center',
+    flex: 1,
+    alignItems: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     textAlignVertical: 'center',
     alignContent: 'center',
-    
+
   },
   modaltextcontainer: {
     alignItems: 'center',
-    backgroundColor:'white',
-    borderWidth:3,
-    margin:50,
-    padding:40,
-    
+    backgroundColor: 'white',
+    borderWidth: 3,
+    margin: 50,
+    padding: 40,
+
   },
   modaltext: {
-    fontSize:15,
+    fontSize: 15,
     fontWeight: 'bold',
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    
+
   },
   modaltext2: {
-    fontSize:10,
+    fontSize: 10,
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
-    
+
   },
   ley: {
-    fontSize:10,
+    fontSize: 10,
     textDecorationLine: 'underline',
-    marginTop:20,
-    
+    marginTop: 20,
+
   },
 });

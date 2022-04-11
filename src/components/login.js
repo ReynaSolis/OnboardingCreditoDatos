@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
-
+import {validacionCurp} from "../api/validacionCurp";
 //curp
 export default class Login extends React.Component {
 
@@ -20,9 +20,15 @@ this.setState({curpv})
 }
 
 
-validado(){
+async validado(){
 if(this.state.curpv.length==18){
-  this.props.navigation.navigate('Upin')
+  const obj={curp:this.state.curpv}
+  const apiResponseCurp= await validacionCurp(obj);
+  if(apiResponseCurp.codigo==="000"){
+      this.props.navigation.navigate('Upin', { curp:this.state.curpv} )
+   }else{
+    this.setState({show:true})
+   }
 }else{
   this.setState({show:true})
 }
@@ -38,7 +44,7 @@ hidden2(){
 
 registro(){
   if(this.state.curpv.length==18){
-    this.props.navigation.navigate('Registro')
+    this.props.navigation.navigate('Registro',{ curp:this.state.curpv})
   }else{
     this.setState({registro:true})
   }

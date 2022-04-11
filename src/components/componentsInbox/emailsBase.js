@@ -4,11 +4,11 @@ export const emails =
     {
       id: 1,
       sender: "Google",
-      subject: "Your password has been changed",
+      subject: "Bienvenido",
       senderImageUrl:
         "https://camo.githubusercontent.com/06b39fc6b7e1ab60119bb11626220535f002634fe5e4bada9362ac26978ab6e1/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f522e706e67",
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+        "CreditoParaTí te da la bienvenida a tu inbox por el cual estaremos en conctacto",
       sentDate: "Dec 87",
       isSaved: false,
       isRead: false,
@@ -16,25 +16,29 @@ export const emails =
   
     {
       id: 2,
-      sender: "Discover Card",
-      subject: "Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum",
+      sender: "CreditoParaTí",
+      subject: "Crédito Para Tí: Solicitud de Envío de Documentos",
       senderImageUrl:
         "https://camo.githubusercontent.com/06b39fc6b7e1ab60119bb11626220535f002634fe5e4bada9362ac26978ab6e1/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f522e706e67",
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+        "El siguiente paso para la Solicitud de tu Crédito Para Tí es enviarnos los sigueintes documentos: \n"+
+        " * Comprobante de domicilio no mayor a 2 meses \n"+
+        " * Recibo de nómina no mayor a 2 meses \n"+
+        " * Identificación oficial \n"+
+        " * Solicitud de crédito firmada \n  https://d1j20k1q2zxhm7.cloudfront.net/   \n \n",
       sentDate: "Dec 15",
       isSaved: true,
       isRead: true,
-    },
+    }/*,
     {
       id: 3,
       sender: "React Native",
-      subject: "It is a long established fact that a reader will be distracted by the readable content of a page",
+      subject: "El siguiente paso  ",
   
       senderImageUrl:
         "https://camo.githubusercontent.com/2b7cb217f80f2b9f8bfb4becdceab7fcaabfcdc3075b0095f4d838a48be08f30/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f4d2e706e67",
       description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+        "Lorem etting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
       sentDate: "Nov 9",
       isSaved: false,
       isRead: false,
@@ -51,7 +55,7 @@ export const emails =
       sentDate: "Nov 15",
       isSaved: false,
       isRead: true,
-    },/*
+    },
     {
       id: 5,
       sender: "Google",

@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
-
+import { insertarUser } from '../../api/insertUser';
 //crear upin
 export default class CrearUpin extends React.Component{
   constructor(props){
@@ -25,10 +25,22 @@ export default class CrearUpin extends React.Component{
   }
   
   
-  validado(){
+ async  validado(){
   if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
     this.state.upinew1 === this.state.upinew2){
-    this.props.navigation.navigate('ContinuarUpin', {data:this.state.upinew2})
+      const objM={telefono:this.props.route.params.telefono,curp:this.props.route.params.curp};
+      const objInt= {curp: objM.curp,telefono: objM.telefono, upin: this.state.upinew1}
+      console.log(objM);
+      console.log(objInt);
+      const resgistrar=await insertarUser(objInt);
+      if(resgistrar.codigo==="000"){
+        this.props.navigation.navigate('ContinuarUpin', objInt)
+      }else{
+
+        console.log("Algo falló");
+      }
+
+    
     
   }else{
     this.setState({show:true})

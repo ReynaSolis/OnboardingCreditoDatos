@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
-
+import { validaCodigoTelefono } from '../../api/validaCodigoTelefono';
 //validacion telefono
 export default class ValidarTelefono extends React.Component{
   constructor(){
@@ -21,9 +21,17 @@ export default class ValidarTelefono extends React.Component{
   }
   
   
-  validado(){
+async validado(){
   if(this.state.telva.length==4){
-    this.props.navigation.navigate('GeneraUpin')
+    const objModel={telefono:this.props.route.params.telefono,curp:this.props.route.params.curp};
+    console.log(objModel);
+    const obj={codigo:this.state.telva, numero:objModel.telefono,curp:objModel.curp }
+    const valCode= await validaCodigoTelefono(obj);
+    console.log(obj);
+    console.log(valCode);
+    if(valCode.respuesta==="000"){
+        this.props.navigation.navigate('GeneraUpin',objModel)
+    }
   }else{
     this.setState({show:true})
     Alert.alert('Codigo de validacion incorrecto', 

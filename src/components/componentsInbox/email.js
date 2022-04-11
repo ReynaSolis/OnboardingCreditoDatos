@@ -4,7 +4,13 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, TouchableHigh
 import { Button } from 'react-native-elements';
 import footer from "../../../assets/img/footer.jpg";
 
+
+
+
 export default class Email extends React.Component{
+
+    //setSource({this.props.email.description});
+
     render(){
         return(
         
@@ -32,8 +38,6 @@ export default class Email extends React.Component{
     <Text style={[styles.subject]}>{this.props.email.subject}</Text>
 
     <Text style={[styles.description]}>{this.props.email.description}</Text>
-              
-
     <View style={styles.containerfooter}>
       
       <TouchableHighlight onPress={() => this.props.onToggleEmail()}>

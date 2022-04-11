@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
-
+import { validacionTelefono } from '../../api/validacionTelefono';
 //telefono
 export default class Telefono extends React.Component{
 
@@ -20,9 +20,17 @@ export default class Telefono extends React.Component{
   }
   
   
-  validado(){
+  async validado(){
   if(this.state.telv.length==10){
-    this.props.navigation.navigate('ValidarTelefono')
+    const obj={numero: this.state.telv}
+    const telefono = await validacionTelefono(obj);
+    const objMod={curp: this.props.route.params.curp, telefono: this.state.telv}
+    console.log(obj);
+    console.log(telefono);
+    console.log(objMod);
+    if(telefono.respuesta==="000"){
+        this.props.navigation.navigate('ValidarTelefono',objMod);
+    }
   }else{
     this.setState({show:true})
   }
