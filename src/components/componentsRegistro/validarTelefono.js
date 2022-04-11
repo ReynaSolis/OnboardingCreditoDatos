@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import { validaCodigoTelefono } from '../../api/validaCodigoTelefono';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 //validacion telefono
 export default class ValidarTelefono extends React.Component{
   constructor(){
@@ -34,13 +36,11 @@ async validado(){
     }
   }else{
     this.setState({show:true})
-    Alert.alert('Codigo de validacion incorrecto', 
-    'Revisa tus SMS para ingresa correctamente el codigo. De no haber recibido el codigo favor de seleccionar "ENVIARMELO DE NUEVO". ', 
-    [{text: 'ENTENDIDO', onPress: ()=> console.log('alert closed')}])
   }
   }
   render(){
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
@@ -101,6 +101,7 @@ async validado(){
         </Modal>
 
          </View>
+         </KeyboardAwareScrollView>
 
          
      
@@ -164,6 +165,7 @@ const styles = StyleSheet.create({
    reenviar: {
     color: "black",
     marginTop:30,
+    marginBottom:30,
     marginLeft: 'auto',
     marginRight: 'auto',
     textAlign: 'center',

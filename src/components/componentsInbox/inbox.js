@@ -1,10 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, TouchableHighlight, Modal } from "react-native";
-import { List, ListItem, Avatar, SearchBar  } from 'react-native-elements';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from "react-native";
+
 import footer from "../../../assets/img/footer.jpg";
 import Emails from './emails';
 import Email from './email';
-import { emails } from './emailsBase';
+
 
 
 //Inbox
@@ -36,9 +36,15 @@ this.setState({
 this.toggleEmail();
   }
 
+  /*
+  refresh(){
+    this.props.navigation.navigate('Inbox')
+  }
+  */
     render(){
 
     return (
+      <ScrollView>
         
         <View style={styles.containergeneral}>
           <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
@@ -64,7 +70,7 @@ this.toggleEmail();
       
       
       </View>
-
+      </ScrollView>
         
     )
 }

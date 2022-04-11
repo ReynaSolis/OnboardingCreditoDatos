@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import { insertarUser } from '../../api/insertUser';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 //crear upin
 export default class CrearUpin extends React.Component{
   constructor(props){
@@ -55,6 +57,7 @@ export default class CrearUpin extends React.Component{
   render(){
     
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
@@ -126,6 +129,7 @@ export default class CrearUpin extends React.Component{
         </Modal>
 
          </View>
+         </KeyboardAwareScrollView>
 
          
      

@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
 //recuperacion uPIN
@@ -13,7 +14,6 @@ export default class ConsultarUpin extends React.Component{
         this.state={
           emailv: '',
           show: false,
-          enviado: false,
         }
       }
       
@@ -23,32 +23,12 @@ export default class ConsultarUpin extends React.Component{
 
 //////////////// validacion email
         validado () {
-
-            if(this.state.emailv==''){
-                this.setState({show:true})
-            
-            }else{
-                //hace validacion de email
-                let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
-                if (reg.test(this.state.emailv) === true){
-                  //valido
-                  this.setState({enviado:true})
-              } else {
-                this.setState({show:true})
-              }
-                
-                }
-
+          this.setState({show:true})
             }
 
 
 
           hidden(){
-            this.setState({show:false})
-          }
-
-          hidden2(){
-            this.setState({enviado:false})
             this.props.navigation.navigate('NuevoUpin')
           }
 
@@ -58,26 +38,17 @@ export default class ConsultarUpin extends React.Component{
 
 
     return (
+      <KeyboardAwareScrollView>
         <View styles={styles.container}>
             
             <Image style={styles.logo} source={logo}/>
             <Text style={styles.title}>Recuperacion uPIN</Text>
-            <Text style={styles.email}>Ingresa un email para recuperar tu uPIN:</Text>
-            <TextInput style={styles.input} 
-            placeholder="example@gmail.com"
-            onChangeText={(emailv)=>this.changeemail(emailv)}
-            value={this.state.emailv}
-            textContentType='emailAddress'
-            keyboardType='email-address'
-            autoCapitalize='none'
-            autoCorrect={false}
-            autoCompleteType='email'
-            />
+            <Text style={styles.email}>Se te enviara un codigo a tu telefono.</Text>
 
             <View style={styles.btn}>
             <Button
             theme={{ colors: { primary: '#000000' } }}
-            title= "Enviar email"
+            title= "Enviar codigo"
             type="clear"
             onPress={() => this.validado() } 
             />
@@ -91,8 +62,8 @@ export default class ConsultarUpin extends React.Component{
           
             <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
-              <Text style={styles.modaltext}>Email incorrecto.</Text>
-              <Text style={styles.modaltext2}>Ingresa un email valido para enviarte un codigo temporal.</Text>
+              <Text style={styles.modaltext}>Codigo Enviado.</Text>
+              <Text style={styles.modaltext2}>Revisa tu bandeja de mensajeria.</Text>
         
               <View style={styles.btn}>
               <Button
@@ -107,31 +78,8 @@ export default class ConsultarUpin extends React.Component{
 
         </Modal>
 
-
-        <Modal
-        transparent={true}
-        visible={this.state.enviado}
-        >
-          
-            <View style={styles.modalcontainer}>
-            <View style={styles.modaltextcontainer}>
-              <Text style={styles.modaltext}>Email correcto.</Text>
-              <Text style={styles.modaltext2}>Revisa tu bandeja de entrada, te mandamos un codigo temporal para generar un nuevo uPIN.</Text>
-        
-              <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "CONTINUAR"
-               type="clear"
-              onPress={() => this.hidden2()} 
-               />
-               </View>
-            </View>
-            </View>
-
-        </Modal>
-
         </View>
+        </KeyboardAwareScrollView>
     )
 }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput} from "react-native";
+import { StyleSheet, Text, View, Image, TextInput} from "react-native";
 import { ListItem, Avatar } from 'react-native-elements';
 import { emails } from './emailsBase';
 import buscador from "../../../assets/img/buscador.png";
@@ -9,19 +9,16 @@ export default class Emails extends React.Component{
 
   constructor(props){
     super(props)
-
     this.state={
-      
       text: '',
       userFilter: emails,
     }
 
   }
 
+  //funcion searchbar filtro
   changetext(textToSearch){
 
-    //alert(textToSearch)
-    
     this.setState({
 userFilter: emails.filter(email =>
   email.sender.toLowerCase().includes(textToSearch.toLowerCase())||
@@ -33,21 +30,17 @@ userFilter: emails.filter(email =>
     render(){
         return(
 
-
-
-          <View>
+        <View>
           <View style={styles.search}>
           <Image style={styles.buscador} source={buscador}/>
           <TextInput
           style={styles.searchinput}
           placeholder="Search"
           onChangeText={(text)=>this.changetext(text)}
-          //value={this.state.text}
+        
           />
           <Image style={styles.usuario} source={usuario}/>
           </View>
-
-          <View style={styles.container}>
 
             {
               this.state.userFilter.map((email) => (
@@ -80,7 +73,7 @@ userFilter: emails.filter(email =>
               ))
             }
             </View>
-            </View>
+            
             
         )
     }
@@ -124,7 +117,5 @@ const styles = StyleSheet.create({
         marginRight:'auto',
         marginTop:5,
        },
-
-
 
 })

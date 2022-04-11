@@ -8,7 +8,11 @@ export const emails =
       senderImageUrl:
         "https://camo.githubusercontent.com/06b39fc6b7e1ab60119bb11626220535f002634fe5e4bada9362ac26978ab6e1/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f522e706e67",
       description:
+<<<<<<< HEAD
         "CreditoParaTí te da la bienvenida a tu inbox por el cual estaremos en conctacto",
+=======
+        "Lorem Ipsum is sssssssssssssssssimpllorem lorem100sdsddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd y dummy text of the printing and https://www.google.com.mx/ typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+>>>>>>> b612b9daac32097b59fdb3c653686c899de8f108
       sentDate: "Dec 87",
       isSaved: false,
       isRead: false,
@@ -21,11 +25,15 @@ export const emails =
       senderImageUrl:
         "https://camo.githubusercontent.com/06b39fc6b7e1ab60119bb11626220535f002634fe5e4bada9362ac26978ab6e1/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f522e706e67",
       description:
+<<<<<<< HEAD
         "El siguiente paso para la Solicitud de tu Crédito Para Tí es enviarnos los sigueintes documentos: \n"+
         " * Comprobante de domicilio no mayor a 2 meses \n"+
         " * Recibo de nómina no mayor a 2 meses \n"+
         " * Identificación oficial \n"+
         " * Solicitud de crédito firmada \n  https://d1j20k1q2zxhm7.cloudfront.net/   \n \n",
+=======
+        "Lorem Ipsum is simply dummy text of https://miro.com/app/board/uXjVOJjfqRY=/  the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+>>>>>>> b612b9daac32097b59fdb3c653686c899de8f108
       sentDate: "Dec 15",
       isSaved: true,
       isRead: true,
@@ -38,7 +46,11 @@ export const emails =
       senderImageUrl:
         "https://camo.githubusercontent.com/2b7cb217f80f2b9f8bfb4becdceab7fcaabfcdc3075b0095f4d838a48be08f30/68747470733a2f2f7261772e6769746875622e636f6d2f656c61646e6176612f6d6174657269616c2d6c65747465722d69636f6e732f6d61737465722f646973742f706e672f4d2e706e67",
       description:
+<<<<<<< HEAD
         "Lorem etting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+=======
+        "Lorem Ipsum is simply dummy text of https://github.com/ReynaSolis rthe printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+>>>>>>> b612b9daac32097b59fdb3c653686c899de8f108
       sentDate: "Nov 9",
       isSaved: false,
       isRead: false,
@@ -133,6 +145,6 @@ export const emails =
       sentDate: "Dec 9",
       isSaved: false,
       isRead: true,
-    },*/
+    },
   ];
   

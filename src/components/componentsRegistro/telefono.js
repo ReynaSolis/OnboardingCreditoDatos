@@ -4,6 +4,8 @@ import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
 import { validacionTelefono } from '../../api/validacionTelefono';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 //telefono
 export default class Telefono extends React.Component{
 
@@ -14,7 +16,7 @@ export default class Telefono extends React.Component{
       show: false,
     }
   }
-  
+  //cambia input
   changetel(telv){
   this.setState({telv})
   }
@@ -35,12 +37,13 @@ export default class Telefono extends React.Component{
     this.setState({show:true})
   }
   }
-
+//oculta modal
   hidden(){
     this.setState({show:false})
   }
   render(){
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
@@ -93,6 +96,7 @@ export default class Telefono extends React.Component{
         </Modal>
 
          </View>
+         </KeyboardAwareScrollView>
 
          
      

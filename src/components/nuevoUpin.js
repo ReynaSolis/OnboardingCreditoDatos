@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 //nuevo upin
 export default class NuevoUpin extends React.Component{
@@ -15,6 +16,7 @@ export default class NuevoUpin extends React.Component{
       temporal: false,
     }
   }
+  //oculta modales
   hidden(){
     this.setState({show:false})
   }
@@ -22,6 +24,7 @@ export default class NuevoUpin extends React.Component{
     this.setState({temporal:false})
   }
   
+  //cambios de input
   changeupinew1(upinew1){
     this.setState({upinew1})
     }
@@ -33,10 +36,22 @@ export default class NuevoUpin extends React.Component{
     this.setState({upinewt})
     }
   
-  
+  //validacion
   validado(){
       //primero se verifica el codigo temporal
       if(this.state.upinewt.length==6){
+        let num = this.state.upinewt.replace(".", '');
+     if(isNaN(num)){
+       //no es un numero
+       this.setState({temporal:true})
+     }else{
+      let num1 = this.state.upinew1.replace(".", '');
+      let num2 = this.state.upinew2.replace(".", '');
+      if(isNaN(num1) && isNaN(num2)){
+        //no es un numero
+        this.setState({show:true})
+      }else{
+
           //validacion de upins iguales
         if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
             this.state.upinew1 === this.state.upinew2){
@@ -45,7 +60,7 @@ export default class NuevoUpin extends React.Component{
             
           }else{
             this.setState({show:true})
-          }
+          }}}
       }else{
         this.setState({temporal:true})
       }
@@ -60,11 +75,12 @@ export default class NuevoUpin extends React.Component{
   render(){
     
   return (
+    <KeyboardAwareScrollView>
         <View>
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Codigo de verificacion</Text>
-         <Text style={styles.instruccion}>Ingresa el codigo de verificacion temporal que se te envio a tu correo previamente.</Text>
+         <Text style={styles.instruccion}>Ingresa el codigo que se te envio.</Text>
 
          <TextInput style={styles.input} 
          placeholder="uPIN temporal"
@@ -164,7 +180,7 @@ export default class NuevoUpin extends React.Component{
 
          </View>
 
-         
+         </KeyboardAwareScrollView>
      
   );
 }
@@ -266,6 +282,5 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     
   },
-
 
 });

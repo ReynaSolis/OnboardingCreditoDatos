@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import {validacionCuenta } from "../api/auth"
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 //upin
 export default class Upin extends React.Component{
   
@@ -38,7 +40,7 @@ export default class Upin extends React.Component{
     this.setState({show:true})
   }
   }
-
+//oculta modales
   hidden(){
     this.setState({show:false})
   }
@@ -47,6 +49,7 @@ export default class Upin extends React.Component{
 
   render(){
   return (
+    <KeyboardAwareScrollView>
     <View>
       
         <Image style={styles.logo} source={logo}/>
@@ -105,6 +108,7 @@ export default class Upin extends React.Component{
 
         </Modal>
          </View>
+         </KeyboardAwareScrollView>
   );
 }
 }

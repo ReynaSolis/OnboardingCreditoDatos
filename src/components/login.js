@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Modal } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
-import {validacionCurp} from "../api/validacionCurp";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 //curp
 export default class Login extends React.Component {
 
@@ -14,7 +15,7 @@ export default class Login extends React.Component {
     registro: false,
   }
 }
-
+//funcion para poder cambiar el input
 changecurp(curpv){
 this.setState({curpv})
 }
@@ -34,14 +35,15 @@ if(this.state.curpv.length==18){
 }
 }
 
+//oculta los modales.
 hidden(){
   this.setState({show:false})
 }
-
+//oculta los modales.
 hidden2(){
   this.setState({registro:false})
 }
-
+//una vez ingresado el curp valida que tenga 18 caracteres
 registro(){
   if(this.state.curpv.length==18){
     this.props.navigation.navigate('Registro',{ curp:this.state.curpv})
@@ -52,9 +54,10 @@ registro(){
 
   
 render(){
-
+  
   return (
-    //desde aqui es lo que vemos en pantalla:
+    <KeyboardAwareScrollView>
+    
         <View>
          <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
          <Image style={styles.logo} source={logo}/>
@@ -63,9 +66,10 @@ render(){
          <TextInput style={styles.input} 
          placeholder="Ingresa los 18 caracteres"
          maxLength={18}
-        keyboardType="default"
+         autoCapitalize = 'characters'
+         password={true}
         onChangeText={(curpv)=>this.changecurp(curpv)}
-        value={this.state.curpv}
+        
          />
 
         <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
@@ -136,6 +140,7 @@ render(){
 
 
          </View>
+         </KeyboardAwareScrollView>
      
   );
 }
@@ -170,7 +175,7 @@ const styles = StyleSheet.create({
     marginLeft:20,
     marginRight:20,
     borderWidth: 1,
-    textTransform: 'uppercase',
+    textTransform: 'uppercase'
    },
    curpgob: {
     color: "blue",
