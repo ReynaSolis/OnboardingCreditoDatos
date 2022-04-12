@@ -2,7 +2,7 @@
 export const emails = 
 [
     {
-      id: 1,
+      id: 1, //usuario
       sender: "Google",
       subject: "Your password has been changed",
       senderImageUrl:

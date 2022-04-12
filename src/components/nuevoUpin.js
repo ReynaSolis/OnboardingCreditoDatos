@@ -39,7 +39,7 @@ export default class NuevoUpin extends React.Component{
   //validacion
   validado(){
       //primero se verifica el codigo temporal
-      if(this.state.upinewt.length==6){
+      if(this.state.upinewt.length!==''){
         let num = this.state.upinewt.replace(".", '');
      if(isNaN(num)){
        //no es un numero

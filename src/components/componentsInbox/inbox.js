@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from "react-native";
-
+import { Button} from 'react-native-elements';
 import footer from "../../../assets/img/footer.jpg";
 import Emails from './emails';
 import Email from './email';
@@ -48,6 +48,14 @@ this.toggleEmail();
         
         <View style={styles.containergeneral}>
           <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
+          <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "Push"
+               type="clear"
+              onPress={() => this.props.navigation.navigate('Push')} 
+               />
+               </View>
       
 
       <Emails
@@ -101,4 +109,12 @@ const styles = StyleSheet.create({
       flex:0.1,
       alignSelf: 'center',
      },
+     btn: {
+      marginTop: 20,
+      marginLeft: 20,
+      marginRight: 20,
+      borderWidth:1,
+      borderRadius:20,
+      
+    },
 })
