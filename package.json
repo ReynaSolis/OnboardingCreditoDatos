@@ -37,11 +37,8 @@
     "react-native-hyperlink": "^0.0.19",
     "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-paper": "^4.12.0",
-<<<<<<< HEAD
     "react-native-render-html": "^6.3.4",
-=======
     "react-native-push-notification": "^8.1.1",
->>>>>>> b612b9daac32097b59fdb3c653686c899de8f108
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",
     "react-native-swipe-gestures": "^1.0.5",

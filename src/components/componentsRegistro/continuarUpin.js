@@ -11,20 +11,18 @@ export default class ContinuarUpin extends React.Component {
       check: false,
       aviso: true,
       avisop: false,
-      upin: ''
     }
   }
 
   async continuar() {
-    this.setState({ check: true })
+ 
     if (this.state.check == false) {
-
+        this.setState( {show:true});
     } else {
-      const obj = { curp: this.props.route.params.curp, upin: this.state.upin }
+      const obj = { curp: this.props.route.params.curp, upin: this.props.route.params.upin }
 
       const apiResponse = await validacionCuenta(obj);
       if (apiResponse.codigo === "000") {
-        this.setState({ show: true })
         this.props.navigation.navigate('Inbox')
       }
 
@@ -72,7 +70,7 @@ export default class ContinuarUpin extends React.Component {
           secureTextEntry={true}
           keyboardType="numeric"
           password={true}
-          value={this.state.upin}
+          value={this.props.route.params.upin}
         />
         <View style={styles.btn}>
           <Button

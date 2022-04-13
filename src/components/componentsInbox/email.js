@@ -32,15 +32,11 @@ export default class Email extends React.Component{
     
     </View>
 
-<<<<<<< HEAD
-    <Text style={[styles.description]}>{this.props.email.description}</Text>
-=======
     <Text style={[styles.subject]}>{this.props.email.subject}</Text>
     <Hyperlink linkDefault={true} onPress={Linking.openURL} linkStyle={{ color:'blue', textDecorationLine: 'underline'}}>
     <Text>{this.props.email.description}</Text>
     </Hyperlink>
 
->>>>>>> b612b9daac32097b59fdb3c653686c899de8f108
     <View style={styles.containerfooter}>
       
       <TouchableHighlight onPress={() => this.props.onToggleEmail()}>
