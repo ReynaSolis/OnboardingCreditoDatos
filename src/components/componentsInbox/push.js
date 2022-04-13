@@ -7,7 +7,7 @@ Notifications.setNotificationHandler({
   handleNotification: async () => ({
     shouldShowAlert: true,
     shouldPlaySound: true,
-    shouldSetBadge: false,
+    shouldSetBadge: true,
   }),
 });
 
@@ -64,7 +64,7 @@ async function sendPushNotification(expoPushToken) {
     to: expoPushToken,
     sound: 'default',
     title: 'Tienes un nuevo email en Credito para Ti.',
-    body: 'Revisa tu Inbox!',
+    body: 'Revisa tu Inbox! el dia de hoy',
   };
 
   await fetch('https://exp.host/--/api/v2/push/send', {
@@ -109,8 +109,6 @@ async function registerForPushNotificationsAsync() {
     Notifications.setNotificationChannelAsync('default',{
       name:'default',
       importance: Notifications.IosAlertStyle.MAX,
-      vibrationPattern: [0,250,250,250],
-      lightColor: '#FF231F7C'
     });
   }*/
 
