@@ -29,13 +29,13 @@ export default class Upin extends React.Component{
     const apiResponse=await validacionCuenta(obj);
     console.log(apiResponse);
     if(apiResponse.codigo==="000"){
-      this.props.navigation.navigate('Inbox')
+      this.props.navigation.navigate('Inbox', {curp: this.props.route.params.curp})
       
     }else{
       this.setState({show:true});
     }
     
-            //inicio sesion corrctamente lo dirige al inbox
+    //inicio sesion corrctamente lo dirige al inbox
   }else{
     this.setState({show:true})
   }
@@ -67,7 +67,7 @@ export default class Upin extends React.Component{
          value={this.state.upinv}
          />
 
-        <Text onPress={() => this.props.navigation.navigate('ConsultarUpin')}
+        <Text onPress={() => this.props.navigation.navigate('ConsultarUpin', {curp: this.props.route.params.curp})}
         style={styles.forgetUpin}>¿Olvidaste tu uPIN?</Text>
         
         <View style={styles.btn}>
@@ -90,7 +90,7 @@ export default class Upin extends React.Component{
               <Text style={styles.modaltext}>UPIN Incorrecto</Text>
               <Text style={styles.modaltext2}>Recuerda que tu uPIN contiene 6 caracteres. 
               Si lo olvidaste puedes consultar en:</Text>
-              <Text onPress={() => this.props.navigation.navigate('ConsultarUpin')}
+              <Text onPress={() => this.props.navigation.navigate('ConsultarUpin', {curp: this.props.route.params.curp})}
               style={styles.forgetUpin}>¿Olvidaste tu uPIN?</Text>
 
   

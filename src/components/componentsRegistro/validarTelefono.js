@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import { validaCodigoTelefono } from '../../api/validaCodigoTelefono';
+import { validacionTelefono } from '../../api/validacionTelefono';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 //validacion telefono
@@ -12,16 +13,32 @@ export default class ValidarTelefono extends React.Component{
     this.state={
       telva: '',
       show: false,
+      reenviado: false
     }
   }
   hidden(){
     this.setState({show:false})
+  }
+
+  hidden2(){
+    this.setState({reenviado:false})
   }
   
   changetelva(telva){
   this.setState({telva})
   }
   
+  async reenviar(){
+    const obj={numero: this.props.route.params.telefono}
+    const telefono = await validacionTelefono(obj);
+    
+    console.log(obj);
+    console.log(telefono);
+    
+    if(telefono.respuesta==="000"){
+      this.setState({reenviado:true})
+    }
+  }
   
 async validado(){
   if(this.state.telva.length==4){
@@ -33,7 +50,7 @@ async validado(){
     console.log(valCode);
     if(valCode.respuesta==="000"){
         this.props.navigation.navigate('GeneraUpin',objModel)
-    }
+    }else{this.setState({show:true})}
   }else{
     this.setState({show:true})
   }
@@ -73,7 +90,7 @@ async validado(){
         <Text style={styles.advertencia}>Tu codigo expira en 60 segundos</Text>
         <Text style={styles.advertencia}>Este proceso puede durar algunos minutos. Si no lo recibes haz click aqui para reenviar.</Text>
 
-        <Text onPress={() => this.props.navigation.navigate('Telefono')}
+        <Text onPress={() => this.reenviar()}
         style={styles.reenviar}>ENVIARMELO DE NUEVO</Text>
 
 <Modal
@@ -93,6 +110,30 @@ async validado(){
                title= "ENTENDIDO"
                type="clear"
               onPress={() => this.hidden()} 
+               />
+               </View>
+            </View>
+            </View>
+
+        </Modal>
+
+
+        <Modal
+        transparent={true}
+        visible={this.state.reenviado}
+        >
+          
+            <View style={styles.modalcontainer}>
+            <View style={styles.modaltextcontainer}>
+              <Text style={styles.modaltext}>Codigo de verificacion reenviado.</Text>
+              
+
+              <View style={styles.btn}>
+              <Button
+               theme={{ colors: { primary: '#000000' } }}
+               title= "ENTENDIDO"
+               type="clear"
+              onPress={() => this.hidden2()} 
                />
                </View>
             </View>

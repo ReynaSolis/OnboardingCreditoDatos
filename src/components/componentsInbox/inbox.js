@@ -1,46 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from "react-native";
-import { Button} from 'react-native-elements';
-import footer from "../../../assets/img/footer.jpg";
-import Emails from './emails';
-import Email from './email';
 
 
 
 //Inbox
 export default class Inbox extends React.Component{
 
-  constructor(props){
-    super(props)
-
-    this.state={
-      show: false,
-      transper:true,
-      text: '',
-      selectEmail:{},
-
-    }
-
-  }
-
-  toggleEmail(){
-    this.setState({
-      show:!this.state.show
-    })
-  }
-
-  displayEmail(email){
-this.setState({
-  selectEmail:email
-})
-this.toggleEmail();
-  }
-
-  /*
-  refresh(){
-    this.props.navigation.navigate('Inbox')
-  }
-  */
     render(){
 
     return (
@@ -48,35 +13,8 @@ this.toggleEmail();
         
         <View style={styles.containergeneral}>
           <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
-          <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "Push"
-               type="clear"
-              onPress={() => this.props.navigation.navigate('Push')} 
-               />
-               </View>
-      
+          <Text style={styles.title}>SUBIR DOCUMENTACION</Text>
 
-      <Emails
-      onSelectEmail={(email)=> this.displayEmail(email)}
-      />
-      <Email
-      email={this.state.selectEmail}
-      visible={this.state.show}
-      onToggleEmail={()=>this.toggleEmail()} 
-      />
-      
-      <View style={styles.containerfooter}>
-      
-      {//<TouchableHighlight onPress={() => this.refresh()}>
-      }
-      <Image style={styles.footerimg} source={footer}/>
-      {//</TouchableHighlight>
-      }
-      </View>
-      
-      
       </View>
       </ScrollView>
         
@@ -99,22 +37,4 @@ const styles = StyleSheet.create({
     backgroundColor:'white'
     },
 
-    footerimg: {
-      width: 30,
-      height: 30,
-      marginBottom:10,
-      marginTop:10,
-     },
-     containerfooter: {
-      flex:0.1,
-      alignSelf: 'center',
-     },
-     btn: {
-      marginTop: 20,
-      marginLeft: 20,
-      marginRight: 20,
-      borderWidth:1,
-      borderRadius:20,
-      
-    },
 })

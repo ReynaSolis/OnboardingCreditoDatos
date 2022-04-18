@@ -38,7 +38,6 @@ export default class CrearUpin extends React.Component{
       if(resgistrar.codigo==="000"){
         this.props.navigation.navigate('ContinuarUpin', objInt)
       }else{
-
         console.log("Algo falló");
       }
 

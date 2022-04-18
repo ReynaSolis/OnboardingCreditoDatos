@@ -28,7 +28,8 @@ export default class Login extends React.Component {
       if (apiResponseCurp.codigo === "000") {
         this.props.navigation.navigate('Upin', { curp: this.state.curpv })
       } else {
-        this.setState({ show: true })
+        //console.log("No estas registrado")
+        this.props.navigation.navigate('Registro', { curp: this.state.curpv })
       }
     } else {
       this.setState({ show: true })

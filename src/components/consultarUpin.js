@@ -5,6 +5,7 @@ import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 
+
 //recuperacion uPIN
 
 export default class ConsultarUpin extends React.Component{
@@ -17,18 +18,21 @@ export default class ConsultarUpin extends React.Component{
         }
       }
       
-      changeemail(emailv){
-        this.setState({emailv})
-        }
 
 //////////////// validacion email
         validado () {
+          //CONSULTA BASE DE DATOS PARA TELEFONO
+          const objM={curp:this.props.route.params.curp};
+          console.log(objM)
+          
+
           this.setState({show:true})
             }
 
 
 
           hidden(){
+            this.setState({show:false})
             this.props.navigation.navigate('NuevoUpin')
           }
 

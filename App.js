@@ -15,7 +15,6 @@ import CrearUpin from './src/components/componentsRegistro/crearUpin';
 import ContinuarUpin from './src/components/componentsRegistro/continuarUpin';
 import Inbox from './src/components/componentsInbox/inbox';
 import NuevoUpin from './src/components/nuevoUpin';
-import Push from './src/components/componentsInbox/push';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +39,6 @@ const App = () => {
         <Stack.Screen name= "ContinuarUpin" component={ContinuarUpin} options={{title:'ContinuarUpin'}} />
         <Stack.Screen name= "Inbox" component={Inbox} options={{title:'Inbox'}} />
         <Stack.Screen name= "NuevoUpin" component={NuevoUpin} options={{title:'NuevoUpin'}} />
-        <Stack.Screen name= "Push" component={Push} options={{title:'Push'}} />
 
       </Stack.Navigator>
       </NavigationContainer>
