@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function insertarCurp(obj) {
   try {
-    const url = appGlobal.apiCredito + "/insertarCurp";
+    const url = appGlobal.apiCredito + "/verificarCurpCPT";
     const params = {
       method: "POST",
       headers: {

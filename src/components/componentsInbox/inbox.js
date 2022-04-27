@@ -6,12 +6,14 @@ import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from "r
 //Inbox
 export default class Inbox extends React.Component{
 
+  //const obj={upin:this.props.route.params.upin,curp:this.props.route.params.curp};
+
     render(){
 
     return (
       <ScrollView>
         
-        <View style={styles.containergeneral}>
+        <View style={{backgroundColor: 'white'}}>
           <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
           <Text style={styles.title}>SUBIR DOCUMENTACION</Text>
 
@@ -23,10 +25,6 @@ export default class Inbox extends React.Component{
 }
 
 const styles = StyleSheet.create({
-    containergeneral:{ 
-    backgroundColor: 'white',
-
-    },
     title: { 
     marginLeft:'auto',
     marginRight:'auto',

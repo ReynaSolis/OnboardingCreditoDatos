@@ -27,9 +27,9 @@ export default class Telefono extends React.Component{
     const obj={numero: this.state.telv}
     const telefono = await validacionTelefono(obj);
     const objMod={curp: this.props.route.params.curp, telefono: this.state.telv}
-    console.log(obj);
-    console.log(telefono);
-    console.log(objMod);
+    //console.log(obj);
+    //console.log(telefono);
+    //console.log(objMod);
     if(telefono.respuesta==="000"){
         this.props.navigation.navigate('ValidarTelefono',objMod);
     }
@@ -44,7 +44,7 @@ export default class Telefono extends React.Component{
   render(){
   return (
     <KeyboardAwareScrollView>
-        <View>
+        <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Validar numero telefonico</Text>

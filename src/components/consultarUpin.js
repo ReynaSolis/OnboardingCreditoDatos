@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
-
+import {validacionCurp} from "../api/validacionCurp";
+import { validacionTelefono } from '../api/validacionTelefono';
 
 //recuperacion uPIN
 
@@ -15,25 +15,57 @@ export default class ConsultarUpin extends React.Component{
         this.state={
           emailv: '',
           show: false,
+          identificadorJourney: '',
+          telefono:''
         }
       }
       
 
 //////////////// validacion email
-        validado () {
+        async validado () {
           //CONSULTA BASE DE DATOS PARA TELEFONO
-          const objM={curp:this.props.route.params.curp};
-          console.log(objM)
           
+          const obj= {
+            curp: this.props.route.params.curp,
+            identificadorJourney: "501"
+          }
+          
+          const apiResponse=await validacionCurp(obj);
+          if(apiResponse.codigo==="000"){
+            const telefonoBase = apiResponse.respuesta;
 
-          this.setState({show:true})
+            this.setState({telefono:telefonoBase})
+            this.setState({identificadorJourney:"501"})
+
+            //console.log(telefonoBase);
+
+            //manda codigo a celular
+            const obj={numero: this.state.telefono}
+            const telefono = await validacionTelefono(obj);
+
+            if(telefono.respuesta==="000"){
+              this.setState({show:true})
+            }else {
+              console.log("Mensaje no enviado.")
+            }
+
+
+            
+          }else {
+            console.log("No registrado.")
+          }
+
+          
             }
 
 
 
           hidden(){
             this.setState({show:false})
-            this.props.navigation.navigate('NuevoUpin')
+            this.props.navigation.navigate('NuevoUpin', 
+            {curp: this.props.route.params.curp, 
+              telefono: this.state.telefono, 
+              identificadorJourney: this.state.identificadorJourney})
           }
 
 
@@ -43,7 +75,7 @@ export default class ConsultarUpin extends React.Component{
 
     return (
       <KeyboardAwareScrollView>
-        <View styles={styles.container}>
+        <View style={{backgroundColor: 'white'}}>
             
             <Image style={styles.logo} source={logo}/>
             <Text style={styles.title}>Recuperacion uPIN</Text>

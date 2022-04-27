@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function insertarUser(obj) {
   try {
-    const url = appGlobal.apiCredito + "/registraUser";
+    const url = appGlobal.apiCredito + "/registraUserInbox";
     const params = {
       method: "POST",
       headers: {

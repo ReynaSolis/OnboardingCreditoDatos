@@ -13,6 +13,7 @@ export default class Upin extends React.Component{
     this.state={
       upinv: '',
       show: false,
+      identificadorJourney: ''
     }
   }
   
@@ -24,18 +25,24 @@ export default class Upin extends React.Component{
   async validado(){
   if(this.state.upinv.length==6){
  
-    const obj= {curp: this.props.route.params.curp, upin:this.state.upinv}
+    const obj= {
+      curp: this.props.route.params.curp,
+      upin:this.state.upinv,
+      identificadorJourney: "501"
+    }
 
     const apiResponse=await validacionCuenta(obj);
-    console.log(apiResponse);
+    //console.log(apiResponse);
+
     if(apiResponse.codigo==="000"){
+      //inicio sesion corrctamente lo dirige al inbox
       this.props.navigation.navigate('Inbox', {curp: this.props.route.params.curp})
       
     }else{
       this.setState({show:true});
     }
     
-    //inicio sesion corrctamente lo dirige al inbox
+    
   }else{
     this.setState({show:true})
   }
@@ -50,7 +57,7 @@ export default class Upin extends React.Component{
   render(){
   return (
     <KeyboardAwareScrollView>
-    <View>
+    <View style={{backgroundColor: 'white'}}>
       
         <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Ingresa tu contraseña / uPIN</Text>

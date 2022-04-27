@@ -32,8 +32,8 @@ export default class ValidarTelefono extends React.Component{
     const obj={numero: this.props.route.params.telefono}
     const telefono = await validacionTelefono(obj);
     
-    console.log(obj);
-    console.log(telefono);
+    //console.log(obj);
+    //console.log(telefono);
     
     if(telefono.respuesta==="000"){
       this.setState({reenviado:true})
@@ -43,11 +43,11 @@ export default class ValidarTelefono extends React.Component{
 async validado(){
   if(this.state.telva.length==4){
     const objModel={telefono:this.props.route.params.telefono,curp:this.props.route.params.curp};
-    console.log(objModel);
+    //console.log(objModel);
     const obj={codigo:this.state.telva, numero:objModel.telefono,curp:objModel.curp }
     const valCode= await validaCodigoTelefono(obj);
-    console.log(obj);
-    console.log(valCode);
+    //console.log(obj);
+    //console.log(valCode);
     if(valCode.respuesta==="000"){
         this.props.navigation.navigate('GeneraUpin',objModel)
     }else{this.setState({show:true})}
@@ -58,7 +58,7 @@ async validado(){
   render(){
   return (
     <KeyboardAwareScrollView>
-        <View>
+        <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Ingresar codigo de validacion</Text>

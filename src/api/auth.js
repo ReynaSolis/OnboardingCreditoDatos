@@ -2,7 +2,7 @@ import { appGlobal } from './appGlobal';
 
 export async function validacionCuenta(obj) {
   try {
-    const url = appGlobal.apiCredito + "/autentication";
+    const url = appGlobal.apiCredito + "/autenticationCPTInbox";
     const params = {
       method: "POST",
       headers: {

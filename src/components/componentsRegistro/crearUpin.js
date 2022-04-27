@@ -13,6 +13,7 @@ export default class CrearUpin extends React.Component{
       upinew1: '',
       upinew2: '',
       show: false,
+      identificadorJourney: '',
     }
   }
   hidden(){
@@ -28,13 +29,26 @@ export default class CrearUpin extends React.Component{
   
   
  async  validado(){
+   
   if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
     this.state.upinew1 === this.state.upinew2){
-      const objM={telefono:this.props.route.params.telefono,curp:this.props.route.params.curp};
-      const objInt= {curp: objM.curp,telefono: objM.telefono, upin: this.state.upinew1}
-      console.log(objM);
-      console.log(objInt);
+      
+
+      const objM={
+        telefono:this.props.route.params.telefono,
+        curp:this.props.route.params.curp
+      };
+
+      const objInt= {
+        curp: objM.curp,
+        telefono: objM.telefono, 
+        upin: this.state.upinew1,
+        identificadorJourney: "501"
+      };
+      //console.log(objM);
+      //console.log(objInt);
       const resgistrar=await insertarUser(objInt);
+
       if(resgistrar.codigo==="000"){
         this.props.navigation.navigate('ContinuarUpin', objInt)
       }else{
@@ -57,7 +71,7 @@ export default class CrearUpin extends React.Component{
     
   return (
     <KeyboardAwareScrollView>
-        <View>
+        <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Crear uPIN</Text>

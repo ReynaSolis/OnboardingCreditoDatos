@@ -3,7 +3,8 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from 
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import { validaCodigoTelefono } from '../api/validaCodigoTelefono';
+import { nuevoUpin } from '../api/nuevoUpin';
 //nuevo upin
 export default class NuevoUpin extends React.Component{
   constructor(props){
@@ -37,30 +38,62 @@ export default class NuevoUpin extends React.Component{
     }
   
   //validacion
-  validado(){
+  async validado(){
       //primero se verifica el codigo temporal
       if(this.state.upinewt.length!==''){
         let num = this.state.upinewt.replace(".", '');
      if(isNaN(num)){
-       //no es un numero
-       this.setState({temporal:true})
+       //no es un numero o esta incorrecto
+    this.setState({temporal:true})
+
      }else{
+       //es un numero y sigue con los upin y valida el codigo
+       const objModel={
+        telefono:this.props.route.params.telefono,
+        curp:this.props.route.params.curp,
+        identificadorJourney:this.props.route.params.identificadorJourney
+      };
+      //console.log(objModel);
+  
+      const obj={codigo:this.state.upinewt, numero:objModel.telefono,curp:objModel.curp }
+      const valCode= await validaCodigoTelefono(obj);
+      //console.log(obj);
+      //console.log(valCode);
+      if(valCode.respuesta==="000"){
+
+        //codigo celular correcto
       let num1 = this.state.upinew1.replace(".", '');
       let num2 = this.state.upinew2.replace(".", '');
       if(isNaN(num1) && isNaN(num2)){
-        //no es un numero
+        //no es un numero los upin
         this.setState({show:true})
       }else{
 
           //validacion de upins iguales
         if(this.state.upinew1.length==6 && this.state.upinew2.length==6 &&
             this.state.upinew1 === this.state.upinew2){
-                //actualiza upin
-            this.props.navigation.navigate('ContinuarUpin', {data:this.state.upinew2})
+
+              const objUpin ={
+                curp: this.props.route.params.curp, 
+                identificadorJourney:this.props.route.params.identificadorJourney,
+                upin: this.state.upinew1
+              }
+            const renuevaUpin = await nuevoUpin(objUpin);
+            if(renuevaUpin.codigo=="001" || renuevaUpin.codigo=="000"){
+              //console.log(renuevaUpin.codigo)
+              this.props.navigation.navigate('ContinuarUpin', {curp: this.props.route.params.curp, upin:this.state.upinew1})
+            }
+            else{
+              this.setState({show:true})
+            }
             
           }else{
             this.setState({show:true})
-          }}}
+          }}
+      }else {
+        this.setState({temporal:true})
+      }
+      }
       }else{
         this.setState({temporal:true})
       }
@@ -76,7 +109,7 @@ export default class NuevoUpin extends React.Component{
     
   return (
     <KeyboardAwareScrollView>
-        <View>
+        <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Codigo de verificacion</Text>
@@ -163,7 +196,7 @@ export default class NuevoUpin extends React.Component{
             <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
             <Text style={styles.modaltext}>Codigo temporal incorrecto/No coincide</Text>
-              <Text style={styles.modaltext2}>Verifica que tu codigo temporal sea el mismo que se mando a tu correo previamente.</Text>
+              <Text style={styles.modaltext2}>Verifica que tu codigo temporal sea el mismo que se mando a tu telefono previamente.</Text>
               <Text style={styles.modaltext2}>De lo contrario no podras generar uno nuevo.</Text>
               <View style={styles.btn}>
               <Button

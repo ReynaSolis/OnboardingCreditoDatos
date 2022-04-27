@@ -20,8 +20,8 @@ export default class Registro extends React.Component {
   async validaCurp(){
     const curpG= {curp: this.props.route.params.curp.toUpperCase()}
    const apiResponse=await validacionCurp(curpG);
-   console.log(curpG);
-   console.log(apiResponse);
+   //console.log(curpG);
+   //console.log(apiResponse);
    if(apiResponse.codigo!="000"){
     this.props.navigation.navigate('Telefono', {curp: this.props.route.params.curp})
    }else{
@@ -31,7 +31,7 @@ export default class Registro extends React.Component {
 
   render(){
   return (
-    <View>
+    <View style={{backgroundColor: 'white'}}>
      
         <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>A continuacion crearas tu cuenta IDe</Text>

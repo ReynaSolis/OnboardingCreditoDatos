@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
 import { Button, CheckBox } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
+import {validacionCuenta } from "../../api/auth";
 
 export default class ContinuarUpin extends React.Component {
   constructor(props) {
@@ -24,6 +25,8 @@ export default class ContinuarUpin extends React.Component {
       const apiResponse = await validacionCuenta(obj);
       if (apiResponse.codigo === "000") {
         this.props.navigation.navigate('Inbox')
+      }else{
+        console.log("no inicio sesion.")
       }
 
     }
@@ -59,7 +62,7 @@ export default class ContinuarUpin extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{backgroundColor: 'white'}}>
         <Image style={styles.logo} source={logo} />
         <Text style={styles.title}>Acceso con uPIN</Text>
         <Text style={styles.upin}>uPIN:</Text>

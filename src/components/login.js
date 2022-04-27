@@ -13,6 +13,7 @@ export default class Login extends React.Component {
       curpv: '',
       show: false,
       registro: false,
+      identificadorJourney: ''
     }
   }
   //funcion para poder cambiar el input
@@ -23,9 +24,15 @@ export default class Login extends React.Component {
 
   async validado() {
     if (this.state.curpv.length == 18) {
-      const obj = { curp: this.state.curpv }
+
+      const obj = { 
+        curp: this.state.curpv,
+        identificadorJourney: "501"
+      }
+
       const apiResponseCurp = await validacionCurp(obj);
       if (apiResponseCurp.codigo === "000") {
+        //console.log("registrado")
         this.props.navigation.navigate('Upin', { curp: this.state.curpv })
       } else {
         //console.log("No estas registrado")
@@ -59,7 +66,7 @@ export default class Login extends React.Component {
     return (
       <KeyboardAwareScrollView>
 
-        <View>
+        <View style={{backgroundColor: 'white'}}>
           <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
           <Image style={styles.logo} source={logo} />
           <Text style={styles.curp}>Ingresa tu CURP:</Text>
