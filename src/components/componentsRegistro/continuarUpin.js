@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity } from "react-native";
 import { Button, CheckBox } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import {validacionCuenta } from "../../api/auth";
@@ -76,14 +76,11 @@ export default class ContinuarUpin extends React.Component {
           value={this.props.route.params.upin}
         />
         <View style={styles.btn}>
-          <Button
-            theme={{ colors: { primary: '#000000' } }}
-            title="CONTINUAR"
-            type="clear"
-            onPress={() =>
-              this.continuar()
-            }
-          />
+          <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.continuar()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>CONTINUAR</Text>
+                  </TouchableOpacity>
         </View>
 
 
@@ -98,12 +95,11 @@ export default class ContinuarUpin extends React.Component {
               <Text style={styles.modaltext}>Acepta la Politica de Privacidad</Text>
 
               <View style={styles.btn}>
-                <Button
-                  theme={{ colors: { primary: '#000000' } }}
-                  title="ENTENDIDO"
-                  type="clear"
+              <TouchableOpacity style={styles.btn2}
                   onPress={() => this.hidden2()}
-                />
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -117,16 +113,14 @@ export default class ContinuarUpin extends React.Component {
 
           <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
-              <Text style={styles.modaltext}>Telefono celular propio</Text>
-              <Text style={styles.modaltext2}>Tu uPIN se ha registrado con exito.</Text>
+              <Text style={styles.modaltext}>Tu uPIN se ha registrado con exito.</Text>
 
               <View style={styles.btn}>
-                <Button
-                  theme={{ colors: { primary: '#000000' } }}
-                  title="ACEPTAR"
-                  type="clear"
+              <TouchableOpacity style={styles.btn2}
                   onPress={() => this.hidden()}
-                />
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ACEPTAR</Text>
+                  </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -158,12 +152,12 @@ export default class ContinuarUpin extends React.Component {
 
 
               <View style={styles.btn}>
-                <Button
-                  theme={{ colors: { primary: '#000000' } }}
-                  title="ACEPTAR"
-                  type="clear"
+              <TouchableOpacity style={styles.btn2}
                   onPress={() => this.inbox()}
-                />
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ACEPTAR</Text>
+                  </TouchableOpacity>
+                
               </View>
 
               <Text onPress={() => Linking.openURL('https://www.diputados.gob.mx/LeyesBiblio/pdf/LFPDPPP.pdf')}
@@ -190,6 +184,9 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     marginBottom: 20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:20,
+    fontWeight:'bolder',
   },
   logo: {
     width: 150,
@@ -201,13 +198,16 @@ const styles = StyleSheet.create({
   },
   upin: {
     color: "black",
-    marginLeft: 15,
+    marginLeft: 20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:20
   },
   input: {
     height: 40,
     marginTop: 10,
     marginLeft: 20,
     marginRight: 20,
+    fontFamily: "Helvetica Neue LT Std",
 
   },
   btn: {
@@ -216,6 +216,19 @@ const styles = StyleSheet.create({
     marginRight: 20,
     borderWidth: 1,
     borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
 
   },
   //modal
@@ -234,6 +247,7 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     margin: 50,
     padding: 40,
+    fontFamily: "Helvetica Neue LT Std",
 
   },
   modaltext: {
@@ -242,6 +256,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
 
   },
   modaltext2: {
@@ -249,12 +264,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
 
   },
   ley: {
     fontSize: 10,
     textDecorationLine: 'underline',
     marginTop: 20,
-
+    fontFamily: "Helvetica Neue LT Std",
   },
+  checkbox:{
+    fontFamily: "Helvetica Neue LT Std",
+  }
 });

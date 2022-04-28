@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     fontFamily: "Helvetica Neue LT Std",
-    fontSize: 15
+    fontSize: 20
   },
   input: {
     height: 40,

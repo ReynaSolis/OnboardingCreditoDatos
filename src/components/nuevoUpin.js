@@ -113,7 +113,7 @@ export default class NuevoUpin extends React.Component{
          
          <Image style={styles.logo} source={logo}/>
          <Text style={styles.title}>Codigo de verificacion</Text>
-         <Text style={styles.instruccion}>Ingresa el codigo que se te envio.</Text>
+         <Text style={styles.instruccion}>Ingresa el codigo que se te envio:</Text>
 
          <TextInput style={styles.input} 
          placeholder="Codigo temporal"
@@ -124,7 +124,7 @@ export default class NuevoUpin extends React.Component{
          value={this.state.upinewt}
          />
 
-         <Text style={styles.instruccion}>Nuevo uPIN</Text>
+         <Text style={styles.instruccion}>Nuevo uPIN:</Text>
 
          <TextInput style={styles.input} 
          placeholder="Nuevo uPIN 6 digitos"

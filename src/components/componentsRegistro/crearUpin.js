@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import { insertarUser } from '../../api/insertUser';
@@ -74,10 +74,10 @@ export default class CrearUpin extends React.Component{
         <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>Crear uPIN</Text>
-         <Text style={styles.instruccion}>Establece tu uPIN de 6 numeros y confirmalo.</Text>
+         <Text style={styles.title}>Crear uPIN.</Text>
+         <Text style={styles.instruccion}>Establece tu uPIN de 6 numeros y confirmalo:</Text>
 
-         <Text style={styles.instruccion}>uPIN</Text>
+         <Text style={styles.instruccion}>uPIN:</Text>
 
          <TextInput style={styles.input} 
          placeholder="uPIN 6 digitos"
@@ -105,18 +105,13 @@ export default class CrearUpin extends React.Component{
 
         />
 
-        <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "ESTABLECER uPIN"
-        type="clear"
-        onPress={() => 
-          this.validado()
-
-        } 
-        />
-
-        </View>
+<View style={styles.btn}>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.validado()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ESTABLECER UPIN</Text>
+                  </TouchableOpacity>
+                  </View>
 
         <Modal
         transparent={true}
@@ -129,13 +124,12 @@ export default class CrearUpin extends React.Component{
               <Text style={styles.modaltext2}>Recuerda que tu uPIN tiene 6 numeros y debe coincidir en ambos recuadros.</Text>
             
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -160,7 +154,9 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     marginBottom: 20,
-    fontWeight: 'bold',
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
    },
    logo: {
     width: 150,
@@ -177,19 +173,37 @@ const styles = StyleSheet.create({
     marginLeft:20,
     marginRight:20,
     borderWidth: 1,
+    borderColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std"
    },
-  btn: {
-    marginBottom:30,
-    marginTop: 30,
+   btn: {
+    marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    borderWidth:1,
-    borderRadius:20,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
   },
   instruccion: {
     color: "black",
     marginLeft: 20,
     marginBottom: 20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 20
    },
    advertencia: {
     color: "black",
@@ -203,14 +217,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlignVertical: 'center',
     alignContent: 'center',
-   },
-   reenviar: {
-    color: "black",
-    marginTop:30,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    textAlign: 'center',
-    fontWeight: 'bold',
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 20
    },
      //modal
   modalcontainer: {
@@ -228,6 +236,8 @@ const styles = StyleSheet.create({
     borderWidth:3,
     margin:50,
     padding:40,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 20
     
   },
   modaltext: {
@@ -236,6 +246,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 20
     
   },
   modaltext2: {
@@ -243,6 +255,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 20
     
   },
 

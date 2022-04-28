@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import { validacionCurp } from '../api/validacionCurp';
@@ -38,14 +38,13 @@ export default class Registro extends React.Component {
          <Image style={styles.logo2} source={logo}/>
          <Text style={styles.title}>Tus documentos de identidad Electronica estaran cifrados y seguros.</Text>
 
-        <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "ENTENDIDO"
-        type="clear"
-        onPress={() => this.validaCurp()} 
-        />
-        </View>
+         <View style={styles.btn}>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.validaCurp()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
 
         <Modal
         transparent={true}
@@ -61,13 +60,12 @@ export default class Registro extends React.Component {
   
 
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -80,10 +78,13 @@ export default class Registro extends React.Component {
 
 const styles = StyleSheet.create({
     title: {
-     color: "black",
-     textAlign: 'center',
+    color: "black",
+    textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
     },
     logo: {
      width: 150,
@@ -102,15 +103,28 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginTop: 30,
        },
-   btn: {
-     marginTop: 20,
-     marginBottom:50,
-     marginLeft: 20,
-     marginRight: 20,
-     borderWidth:1,
-     borderRadius:20,
-     
-   },
+       btn: {
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 20,
+        borderWidth: 1,
+        borderRadius: 20,
+        backgroundColor:'rgba(206, 31, 40, 1)',
+        fontFamily: "Helvetica Neue LT Std",
+        alignItems:'center'
+    
+      },
+      btn2: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop:10,
+        marginBottom:10,
+        backgroundColor:'rgba(206, 31, 40, 1)',
+        fontFamily: "Helvetica Neue LT Std",
+        alignItems:'center'
+    
+      },
       //modal
   modalcontainer: {
     flex:1,
@@ -127,21 +141,24 @@ const styles = StyleSheet.create({
     borderWidth:3,
     margin:30,
     padding:20,
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext: {
-    fontSize:15,
+    fontSize:20,
     fontWeight: 'bold',
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext2: {
-    fontSize:10,
+    fontSize:20,
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
  

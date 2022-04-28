@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import mexico from "../../../assets/img/mexico.png";
@@ -47,7 +47,7 @@ export default class Telefono extends React.Component{
         <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>Validar numero telefonico</Text>
+         <Text style={styles.title}>Validar numero telefonico.</Text>
          <Text style={styles.title}>A continuacion recibiras un SMS con un codigo de validacion.</Text>
          <Text style={styles.movil}>Numero movil:</Text>
 
@@ -64,13 +64,13 @@ export default class Telefono extends React.Component{
         </View>
       
         <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "OBTENER CODIGO"
-        type="clear"
-        onPress={() => this.validado()} 
-        />
-        </View>
+          <TouchableOpacity style={styles.btn2}
+            onPress={() => this.validado()}
+            >
+          <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>OBTENER CODIGO</Text>
+          </TouchableOpacity>
+            
+          </View>
 
 
         <Modal
@@ -83,13 +83,12 @@ export default class Telefono extends React.Component{
               <Text style={styles.modaltext2}>Introduce un numero de celular valido.</Text>
             
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -113,7 +112,11 @@ const styles = StyleSheet.create({
    title: {
     color: "black",
     marginLeft: 20,
+    marginRight: 20,
     marginBottom: 20,
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
    },
    logo: {
     width: 150,
@@ -125,7 +128,9 @@ const styles = StyleSheet.create({
    },
    movil: {
     color: "black",
-    marginLeft:15,
+    marginLeft:20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 20
    },
    container: {
     marginBottom: 20,
@@ -144,20 +149,37 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     marginLeft: 10,
     marginRight: 10,
+    fontFamily: "Helvetica Neue LT Std"
 
    },
    input: {
     height:40,
     width:250, 
     borderWidth: 1,
+    borderColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std"
    },
-  btn: {
+   btn: {
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    borderWidth:1,
-    borderRadius:20,
-    
+    marginBottom: 20,
+    borderWidth: 1,
+    borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
   },
         //modal
         modalcontainer: {
@@ -175,14 +197,16 @@ const styles = StyleSheet.create({
           borderWidth:3,
           margin:30,
           padding:20,
+          fontFamily: "Helvetica Neue LT Std",
           
         },
         modaltext2: {
-          fontSize:10,
+          fontSize:20,
           fontWeight:'bold',
           textAlign: 'center',
           marginLeft: 'auto',
           marginRight: 'auto',
+          fontFamily: "Helvetica Neue LT Std",
           
         },
 

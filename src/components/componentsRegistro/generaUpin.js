@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 
@@ -21,14 +21,14 @@ render(){
          <Image style={styles.logo2} source={logo}/>
 
         <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "ENTENDIDO"
-        type="clear"
-        onPress={() =>
-          this.validandoObj()
-        } 
-        />
+        <TouchableOpacity style={styles.btn2}
+            onPress={() =>
+              this.validandoObj()
+            } 
+            >
+          <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+          </TouchableOpacity>
+        
         </View>
 
          </View>
@@ -38,9 +38,12 @@ render(){
 const styles = StyleSheet.create({
     title: {
      color: "black",
-     marginLeft: 'auto',
-     marginRight: 'auto',
+     marginLeft: '10',
+     marginRight: '10',
      textAlign: 'center',
+     fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
     },
     logo: {
      width: 150,
@@ -59,14 +62,27 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginTop: 30,
        },
-   btn: {
-     marginTop: 20,
-     marginBottom:100,
-     marginLeft: 20,
-     marginRight: 20,
-     borderWidth:1,
-     borderRadius:20,
-     
-   },
+       btn: {
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 20,
+        borderWidth: 1,
+        borderRadius: 20,
+        backgroundColor:'rgba(206, 31, 40, 1)',
+        fontFamily: "Helvetica Neue LT Std",
+        alignItems:'center'
+    
+      },
+      btn2: {
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop:10,
+        marginBottom:10,
+        backgroundColor:'rgba(206, 31, 40, 1)',
+        fontFamily: "Helvetica Neue LT Std",
+        alignItems:'center'
+    
+      },
  
  });

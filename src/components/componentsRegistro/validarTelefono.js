@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity  } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../../assets/img/logo.png";
 import { validaCodigoTelefono } from '../../api/validaCodigoTelefono';
@@ -61,8 +61,8 @@ async validado(){
         <View style={{backgroundColor: 'white'}}>
          
          <Image style={styles.logo} source={logo}/>
-         <Text style={styles.title}>Ingresar codigo de validacion</Text>
-         <Text style={styles.instruccion}>Ingresa el codigo de numeros que enviamos a tu celular via SMS.</Text>
+         <Text style={styles.title}>Ingresar codigo de validacion.</Text>
+         <Text style={styles.instruccion}>Ingresa el codigo de numeros que enviamos a tu celular via SMS:</Text>
          
 
          <TextInput style={styles.input} 
@@ -75,25 +75,21 @@ async validado(){
          />
 
       
-        <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "VALIDAR CELULAR"
-        type="clear"
-        onPress={() => 
-          this.validado()
-        } 
-        />
+                  <View style={styles.btn}>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.validado()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>VALIDAR CELULAR</Text>
+                  </TouchableOpacity>
+                  </View>
 
-        </View>
-
-        <Text style={styles.advertencia}>Tu codigo expira en 60 segundos</Text>
+        <Text style={styles.advertencia}>Tu codigo expira en 60 segundos.</Text>
         <Text style={styles.advertencia}>Este proceso puede durar algunos minutos. Si no lo recibes haz click aqui para reenviar.</Text>
 
         <Text onPress={() => this.reenviar()}
         style={styles.reenviar}>ENVIARMELO DE NUEVO</Text>
 
-<Modal
+        <Modal
         transparent={true}
         visible={this.state.show}
         >
@@ -101,17 +97,16 @@ async validado(){
             <View style={styles.modalcontainer}>
             <View style={styles.modaltextcontainer}>
               <Text style={styles.modaltext}>Codigo de validacion incorrecto</Text>
-              <Text style={styles.modaltext2}>Revisa tus SMS para ingresa correctamente el codigo. 
+              <Text style={styles.modaltext2}>Revisa tus SMS para ingresar correctamente el codigo. 
               De no haber recibido el codigo favor de seleccionar "ENVIARMELO DE NUEVO".</Text>
 
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -129,13 +124,12 @@ async validado(){
               
 
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden2()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden2()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -160,7 +154,9 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     marginBottom: 20,
-    fontWeight: 'bold',
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
    },
    logo: {
     width: 150,
@@ -176,19 +172,38 @@ const styles = StyleSheet.create({
     marginLeft:20,
     marginRight:20,
     borderWidth: 1,
+    borderColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
    },
-  btn: {
-    marginBottom:30,
-    marginTop: 30,
+   btn: {
+    marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    borderWidth:1,
-    borderRadius:20,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
   },
   instruccion: {
     color: "black",
     marginLeft: 20,
+    marginRight: 20,
     marginBottom: 20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:20,
    },
    advertencia: {
     color: "black",
@@ -202,6 +217,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlignVertical: 'center',
     alignContent: 'center',
+    fontFamily: "Helvetica Neue LT Std",
+    fontsize:20
    },
    reenviar: {
     color: "black",
@@ -211,6 +228,8 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     textAlign: 'center',
     fontWeight: 'bold',
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:15
    },
          //modal
   modalcontainer: {
@@ -228,21 +247,24 @@ const styles = StyleSheet.create({
     borderWidth:3,
     margin:30,
     padding:20,
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext: {
-    fontSize:15,
+    fontSize:20,
     fontWeight: 'bold',
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext2: {
-    fontSize:10,
+    fontSize:20,
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
 
