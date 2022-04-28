@@ -27,18 +27,18 @@ const App = () => {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name= "Login" component={Login} options={{title:'Login'}} />
-        <Stack.Screen name= "Upin" component={Upin} options={{title:'Upin'}} />
-        <Stack.Screen name= "ConsultarUpin" component={ConsultarUpin} options={{title:'ConsultarUpin'}} />
-        <Stack.Screen name= "Registro" component={Registro} options={{title:'Registro'}} />
+        <Stack.Screen name= "Login" component={Login} />
+        <Stack.Screen name= "Upin" component={Upin} />
+        <Stack.Screen name= "ConsultarUpin" component={ConsultarUpin}  />
+        <Stack.Screen name= "Registro" component={Registro}  />
 
-        <Stack.Screen name= "Telefono" component={Telefono} options={{title:'Telefono'}} />
-        <Stack.Screen name= "ValidarTelefono" component={ValidarTelefono} options={{title:'ValidarTelefono'}} />
-        <Stack.Screen name= "GeneraUpin" component={GeneraUpin} options={{title:'GeneraUpin'}} />
-        <Stack.Screen name= "CrearUpin" component={CrearUpin} options={{title:'CrearUpin'}} />
-        <Stack.Screen name= "ContinuarUpin" component={ContinuarUpin} options={{title:'ContinuarUpin'}} />
-        <Stack.Screen name= "Inbox" component={Inbox} options={{title:'Inbox'}} />
-        <Stack.Screen name= "NuevoUpin" component={NuevoUpin} options={{title:'NuevoUpin'}} />
+        <Stack.Screen name= "Telefono" component={Telefono}  />
+        <Stack.Screen name= "ValidarTelefono" component={ValidarTelefono}  />
+        <Stack.Screen name= "GeneraUpin" component={GeneraUpin}  />
+        <Stack.Screen name= "CrearUpin" component={CrearUpin}  />
+        <Stack.Screen name= "ContinuarUpin" component={ContinuarUpin}  />
+        <Stack.Screen name= "Inbox" component={Inbox}  />
+        <Stack.Screen name= "NuevoUpin" component={NuevoUpin}  />
 
       </Stack.Navigator>
       </NavigationContainer>

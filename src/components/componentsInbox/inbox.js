@@ -6,7 +6,7 @@ import { StyleSheet, Text, View, Image, ScrollView, TouchableHighlight } from "r
 //Inbox
 export default class Inbox extends React.Component{
 
-  //const obj={upin:this.props.route.params.upin,curp:this.props.route.params.curp};
+  //const obj={curp:this.props.route.params.curp};
 
     render(){
 

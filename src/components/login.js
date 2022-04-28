@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, Linking, TextInput, Modal, TouchableOpac
 import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { validacionCurp } from '../api/validacionCurp';
+import Footer from '../components/footer/Footer';
 //curp
 export default class Login extends React.Component {
 
@@ -93,6 +94,8 @@ export default class Login extends React.Component {
           </TouchableOpacity>
             
           </View>
+
+          <Footer/>
 
           <Modal
             transparent={true}
@@ -202,7 +205,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
-    marginBottom: 20,
+    marginBottom: 70,
     borderWidth: 1,
     borderRadius: 20,
     backgroundColor:'rgba(206, 31, 40, 1)',
