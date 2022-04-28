@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Modal } from "react-native";
-import { Button } from 'react-native-elements';
+import { StyleSheet, Text, View, Image, Linking, TextInput, Modal, TouchableOpacity } from "react-native";
 import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { validacionCurp } from '../api/validacionCurp';
@@ -87,12 +86,12 @@ export default class Login extends React.Component {
             style={styles.curpgob}>¡Registrate!</Text>
 
           <View style={styles.btn}>
-            <Button
-              theme={{ colors: { primary: '#000000' } }}
-              title="Entendido"
-              type="clear"
-              onPress={() => this.validado()}
-            />
+          <TouchableOpacity style={styles.btn2}
+            onPress={() => this.validado()}
+            >
+          <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+          </TouchableOpacity>
+            
           </View>
 
           <Modal
@@ -108,15 +107,14 @@ export default class Login extends React.Component {
                 <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
                   style={styles.curpgob}>¿Olvidaste tu CURP?</Text>
 
-
-                <View style={styles.btn}>
-                  <Button
-                    theme={{ colors: { primary: '#000000' } }}
-                    title="ENTENDIDO"
-                    type="clear"
-                    onPress={() => this.hidden()}
-                  />
-                </View>
+                  <View style={styles.btn}>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
+                
               </View>
             </View>
 
@@ -131,15 +129,13 @@ export default class Login extends React.Component {
               <View style={styles.modaltextcontainer}>
                 <Text style={styles.modaltext}>Introduce tu CURP para el registro.</Text>
 
-
                 <View style={styles.btn}>
-                  <Button
-                    theme={{ colors: { primary: '#000000' } }}
-                    title="ENTENDIDO"
-                    type="clear"
-                    onPress={() => this.hidden2()}
-                  />
-                </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden2()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
               </View>
             </View>
 
@@ -161,21 +157,27 @@ export default class Login extends React.Component {
 //styles
 const styles = StyleSheet.create({
   title: {
-    color: "black",
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginTop:30,
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: 170,
+    height: 170,
     display: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginBottom: 20
+    marginBottom: 20,
+    marginTop:10
   },
   curp: {
     color: "black",
-    marginLeft: 15,
+    marginLeft: 20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize: 15
   },
   input: {
     height: 40,
@@ -183,21 +185,39 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     borderWidth: 1,
-    textTransform: 'uppercase'
+    borderColor:'rgba(206, 31, 40, 1)',
+    textTransform: 'uppercase',
+    fontFamily: "Helvetica Neue LT Std"
   },
   curpgob: {
     color: "blue",
     marginTop: 30,
     marginLeft: 'auto',
     marginRight: 'auto',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:15,
   },
   btn: {
     marginTop: 20,
     marginLeft: 20,
     marginRight: 20,
+    marginBottom: 20,
     borderWidth: 1,
     borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
 
   },
   //modal
@@ -216,21 +236,24 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     margin: 50,
     padding: 40,
+    fontFamily: "Helvetica Neue LT Std",
 
   },
   modaltext: {
-    fontSize: 15,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
 
   },
   modaltext2: {
-    fontSize: 10,
+    fontSize: 20,
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
 
   },
 

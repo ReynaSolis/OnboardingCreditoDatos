@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import {validacionCuenta } from "../api/auth"
@@ -78,14 +78,13 @@ export default class Upin extends React.Component{
         style={styles.forgetUpin}>¿Olvidaste tu uPIN?</Text>
         
         <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "INICIAR SESION"
-        type="clear"
-        onPress={() => 
-          this.validado()}
-        />
-        </View>
+          <TouchableOpacity style={styles.btn2}
+            onPress={() => this.validado()}
+            >
+          <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>INICIAR SESION</Text>
+          </TouchableOpacity>
+            
+          </View>
 
         <Modal
         transparent={true}
@@ -102,14 +101,13 @@ export default class Upin extends React.Component{
 
   
 
-              <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                  <View style={styles.btn}>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -125,6 +123,9 @@ const styles = StyleSheet.create({
      color: "black",
      marginLeft: 'auto',
      marginRight: 'auto',
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
     },
     logo: {
      width: 150,
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
      display: 'flex',
      marginLeft: 'auto',
      marginRight: 'auto',
-     marginBottom: 20
+     marginTop:10
     },
     logo2: {
         width: 250,
@@ -145,7 +146,9 @@ const styles = StyleSheet.create({
        },
     upin: {
      color: "black",
-     marginLeft:15,
+     marginLeft:20,
+     fontFamily: "Helvetica Neue LT Std",
+     fontSize:15
     },
     input: {
      height:40, 
@@ -153,23 +156,40 @@ const styles = StyleSheet.create({
      marginLeft:20,
      marginRight:20,
      borderWidth: 1,
+     borderColor:'rgba(206, 31, 40, 1)',
+     fontFamily: "Helvetica Neue LT Std",
     },
     forgetUpin: {
      color: "blue",
      marginTop:30,
      marginLeft: 'auto',
      marginRight: 'auto',
-     textDecorationLine: 'underline'
+     textDecorationLine: 'underline',
+     fontFamily: "Helvetica Neue LT Std",
+     fontSize:15
    },
    btn: {
-     marginTop: 20,
-     marginBottom:30,
-     marginLeft: 20,
-     marginRight: 20,
-     borderWidth:1,
-     borderRadius:20,
-     
-   },
+    marginTop: 20,
+    marginBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    borderWidth: 1,
+    borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center'
+
+  },
    //modal
   modalcontainer: {
     flex:1,
@@ -186,6 +206,7 @@ const styles = StyleSheet.create({
     borderWidth:3,
     margin:30,
     padding:20,
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext: {
@@ -194,13 +215,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext2: {
-    fontSize:10,
+    fontSize:15,
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
  

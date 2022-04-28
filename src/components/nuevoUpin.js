@@ -1,5 +1,5 @@
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal } from "react-native";
+import { StyleSheet, Text, View, Image, Linking, TextInput, Alert, Modal, TouchableOpacity } from "react-native";
 import { Button } from 'react-native-elements';
 import logo from "../../assets/img/logo.png";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
@@ -116,8 +116,8 @@ export default class NuevoUpin extends React.Component{
          <Text style={styles.instruccion}>Ingresa el codigo que se te envio.</Text>
 
          <TextInput style={styles.input} 
-         placeholder="uPIN temporal"
-         maxLength={6}
+         placeholder="Codigo temporal"
+         maxLength={4}
          keyboardType="numeric"
          password={true}
          onChangeText={(upinewt)=>this.changeupinewt(upinewt)}
@@ -141,7 +141,7 @@ export default class NuevoUpin extends React.Component{
         <Text style={styles.instruccion}>Confirmar uPIN:</Text>
 
         <TextInput style={styles.input} 
-        placeholder=" Confirmar uPIN"
+        placeholder="Confirmar uPIN"
         maxLength={6}
         secureTextEntry={true}
         keyboardType="numeric"
@@ -152,18 +152,14 @@ export default class NuevoUpin extends React.Component{
 
         />
 
-        <View style={styles.btn}>
-        <Button
-        theme={{ colors: { primary: '#000000' } }}
-        title= "REESTABLECER uPIN"
-        type="clear"
-        onPress={() => 
-          this.validado()
-
-        } 
-        />
-
-        </View>
+          <View style={styles.btn}>
+          <TouchableOpacity style={styles.btn2}
+            onPress={() => this.validado()}
+            >
+          <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>RESTABLECER UPIN</Text>
+          </TouchableOpacity>
+            
+          </View>
 
         <Modal
         transparent={true}
@@ -176,13 +172,13 @@ export default class NuevoUpin extends React.Component{
               <Text style={styles.modaltext2}>Recuerda que tu uPIN tiene 6 numeros y debe coincidir en ambos recuadros.</Text>
             
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+              </View>
+
             </View>
             </View>
 
@@ -199,13 +195,12 @@ export default class NuevoUpin extends React.Component{
               <Text style={styles.modaltext2}>Verifica que tu codigo temporal sea el mismo que se mando a tu telefono previamente.</Text>
               <Text style={styles.modaltext2}>De lo contrario no podras generar uno nuevo.</Text>
               <View style={styles.btn}>
-              <Button
-               theme={{ colors: { primary: '#000000' } }}
-               title= "ENTENDIDO"
-               type="clear"
-              onPress={() => this.hidden2()} 
-               />
-               </View>
+                  <TouchableOpacity style={styles.btn2}
+                  onPress={() => this.hidden2()}
+                  >
+                    <Text style={{color:'white', fontFamily: "Helvetica Neue LT Std"}}>ENTENDIDO</Text>
+                  </TouchableOpacity>
+                  </View>
             </View>
             </View>
 
@@ -229,7 +224,9 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     marginBottom: 20,
-    fontWeight: 'bold',
+    fontSize:20,
+    fontWeight:'bolder',
+    fontFamily: "Helvetica Neue LT Std",
    },
    logo: {
     width: 150,
@@ -246,20 +243,40 @@ const styles = StyleSheet.create({
     marginLeft:20,
     marginRight:20,
     borderWidth: 1,
+    borderColor:'rgba(206, 31, 40, 1)',
+     fontFamily: "Helvetica Neue LT Std",
    },
-  btn: {
-    marginBottom:30,
-    marginTop: 30,
+   btn: {
+    marginTop: 20,
+    marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,
-    borderWidth:1,
-    borderRadius:20,
+    borderWidth: 1,
+    borderRadius: 20,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center',
+    fontSize:20
+
+  },
+  btn2: {
+    marginLeft: 20,
+    marginRight: 20,
+    marginTop:10,
+    marginBottom:10,
+    backgroundColor:'rgba(206, 31, 40, 1)',
+    fontFamily: "Helvetica Neue LT Std",
+    alignItems:'center',
+    fontSize:20
+
   },
   instruccion: {
     color: "black",
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 20,
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:20
    },
    advertencia: {
     color: "black",
@@ -273,6 +290,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlignVertical: 'center',
     alignContent: 'center',
+    fontFamily: "Helvetica Neue LT Std",
+    fontSize:20
    },
    reenviar: {
     color: "black",
@@ -281,6 +300,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     textAlign: 'center',
     fontWeight: 'bold',
+    fontFamily: "Helvetica Neue LT Std",
    },
      //modal
   modalcontainer: {
@@ -290,6 +310,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlignVertical: 'center',
     alignContent: 'center',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltextcontainer: {
@@ -298,21 +319,24 @@ const styles = StyleSheet.create({
     borderWidth:3,
     margin:50,
     padding:40,
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext: {
-    fontSize:15,
+    fontSize:20,
     fontWeight: 'bold',
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
   modaltext2: {
-    fontSize:10,
+    fontSize:20,
     textAlign: 'center',
     marginLeft: 'auto',
     marginRight: 'auto',
+    fontFamily: "Helvetica Neue LT Std",
     
   },
 
