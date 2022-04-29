@@ -67,7 +67,7 @@ export default class Login extends React.Component {
       <KeyboardAwareScrollView>
 
         <View style={{backgroundColor: 'white'}}>
-          <Text style={styles.title}>Bienvenida/o a tu correo personal DPR</Text>
+          <Text style={styles.title}>Bienvenida/o</Text>
           <Image style={styles.logo} source={logo} />
           <Text style={styles.curp}>Ingresa tu CURP:</Text>
 
@@ -82,9 +82,6 @@ export default class Login extends React.Component {
 
           <Text onPress={() => Linking.openURL('https://www.gob.mx/curp/')}
             style={styles.curpgob}>¿Olvidaste tu CURP?</Text>
-
-          <Text onPress={() => this.registro()}
-            style={styles.curpgob}>¡Registrate!</Text>
 
           <View style={styles.btn}>
           <TouchableOpacity style={styles.btn2}
